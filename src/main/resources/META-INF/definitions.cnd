@@ -1,0 +1,18 @@
+<jmix = 'http://www.jahia.org/jahia/mix/1.0'>
+<jnt = 'http://www.jahia.org/jahia/nt/1.0'>
+<mix = 'http://www.jcp.org/jcr/mix/1.0'>
+
+[jnt:bootstrapContainer] > jnt:content, jmix:layoutComponentContent
+ - fluid (boolean) indexed=no
+ + * (jmix:droppableContent) = jmix:droppableContent
+
+[jnt:bootstrapRow] > jnt:content, jmix:layoutComponentContent orderable
+ - fluid (boolean) indexed=no
+ + * (jnt:bootstrapCell) = jnt:bootstrapCell
+
+[jnt:bootstrapCell] > jnt:content, jmix:studioLayout
+ - span (long) = 1 indexed=no
+ - offset (long) = 0 indexed=no
+ + * (jmix:droppableContent) = jmix:droppableContent
+
+[jnt:testBootstrap] > jnt:content, jmix:basicContent
