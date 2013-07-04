@@ -49,11 +49,11 @@ import javax.jcr.RepositoryException;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-public class BootstrapCellDecorator extends JCRNodeDecorator {
+public class BootstrapColumnDecorator extends JCRNodeDecorator {
 
-    private static Logger logger = org.slf4j.LoggerFactory.getLogger(BootstrapCellDecorator.class);
+    private static Logger logger = org.slf4j.LoggerFactory.getLogger(BootstrapColumnDecorator.class);
 
-    public BootstrapCellDecorator(JCRNodeWrapper node) {
+    public BootstrapColumnDecorator(JCRNodeWrapper node) {
         super(node);
     }
 

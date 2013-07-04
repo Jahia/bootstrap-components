@@ -6,7 +6,7 @@
     <bean class="org.jahia.services.content.decorator.JCRNodeDecoratorDefinition">
         <property name="decorators">
             <map>
-                <entry key="jnt:bootstrapCell" value="org.jahia.modules.bootstrap.decorators.BootstrapCellDecorator"/>
+                <entry key="jnt:bootstrapColumn" value="org.jahia.modules.bootstrap.decorators.BootstrapColumnDecorator"/>
             </map>
         </property>
     </bean>

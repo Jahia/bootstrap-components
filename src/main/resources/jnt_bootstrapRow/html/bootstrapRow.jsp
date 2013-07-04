@@ -6,7 +6,7 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <bootstrap:addCSS />
 <div class="row${currentNode.properties.fluid.boolean ? '-fluid' : ''}">
-    <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jnt:bootstrapCell')}" var="child" varStatus="status">
+    <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jnt:bootstrapColumn')}" var="child" varStatus="status">
         <c:set var="offsetClass" value=""/>
         <c:if test="${child.properties.offset.long gt 0}">
             <c:set var="offsetClass" value=" offset${child.properties.offset.long}"/>

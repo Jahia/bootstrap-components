@@ -8,9 +8,9 @@
 
 [jnt:bootstrapRow] > jnt:content, jmix:layoutComponentContent orderable
  - fluid (boolean) indexed=no
- + * (jnt:bootstrapCell) = jnt:bootstrapCell
+ + * (jnt:bootstrapColumn) = jnt:bootstrapColumn
 
-[jnt:bootstrapCell] > jnt:content, jmix:studioLayout
+[jnt:bootstrapColumn] > jnt:content, jmix:studioLayout
  - span (long) = 1 indexed=no
  - offset (long) = 0 indexed=no
  + * (jmix:droppableContent) = jmix:droppableContent
