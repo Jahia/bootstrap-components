@@ -1,0 +1,2 @@
+<%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
+<a href="#" data-toggle="dropdown" class="dropdown-toggle">${currentNode.displayableName} <b class="caret"></b></a>

@@ -15,4 +15,9 @@
  - offset (long) = 0 indexed=no
  + * (jmix:droppableContent) = jmix:droppableContent
 
+[jnt:bootstrapNavMenu] > jnt:navMenu
+ - option (string,choicelist[resourceBundle]) indexed=no < '', 'navbar-fixed-top', 'navbar-fixed-bottom', 'navbar-static-top'
+ - responsive (boolean) indexed=no
+ - inverse (boolean) indexed=no
+
 [jnt:testBootstrap] > jnt:content, jmix:basicContent
