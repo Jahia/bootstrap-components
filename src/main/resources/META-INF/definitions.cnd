@@ -16,11 +16,15 @@
  + * (jmix:droppableContent) = jmix:droppableContent
 
 [jnt:bootstrapBreadcrumb] > jnt:pageBreadcrumb
- - divider (string)
+ - divider (string) indexed=no
 
 [jnt:bootstrapNavMenu] > jnt:navMenu
  - option (string,choicelist[resourceBundle]) indexed=no < '', 'navbar-fixed-top', 'navbar-fixed-bottom', 'navbar-static-top'
  - responsive (boolean) indexed=no
  - inverse (boolean) indexed=no
+
+[jnt:bootstrapPager] > jnt:pager
+ - paginationSize (string,choicelist[resourceBundle]) indexed=no < '', 'pagination-large', 'pagination-small', 'pagination-mini'
+ - paginationAlignment (string,choicelist[resourceBundle]) indexed=no < '', 'pagination-centered', 'pagination-right'
 
 [jnt:testBootstrap] > jnt:content, jmix:basicContent
