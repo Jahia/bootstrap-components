@@ -27,4 +27,9 @@
  - paginationSize (string,choicelist[resourceBundle]) indexed=no < '', 'pagination-large', 'pagination-small', 'pagination-mini'
  - paginationAlignment (string,choicelist[resourceBundle]) indexed=no < '', 'pagination-centered', 'pagination-right'
 
+ [jnt:bootstrapTabularList] > jnt:tabularList, jmix:layoutComponentContent, jmix:manuallyOrderable
+  orderable
+  - tabsPosition (string, choicelist[resourceBundle]) = 'top' mandatory < 'left', 'top', 'right', 'below'
+  - fadeIn (boolean) = true autocreated mandatory
+
 [jnt:testBootstrap] > jnt:content, jmix:basicContent

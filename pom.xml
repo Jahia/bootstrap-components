@@ -87,7 +87,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Jahia-Depends>default,bootstrap</Jahia-Depends> 
+                        <Jahia-Depends>default,bootstrap,tabularList</Jahia-Depends>
                     </instructions>
                 </configuration>
             </plugin>
