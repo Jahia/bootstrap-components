@@ -4,11 +4,13 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
 <jcr:nodeProperty node="${currentNode}" name="background" var="background"/>
-<template:addCacheDependency node="${background.node}"/>
-<img src="${background.node.url}" alt="">
-
-<div class="carousel-caption">
-    <h4><jcr:nodeProperty node="${currentNode}" name="jcr:title"/></h4>
-
+<c:if test="${not empty background}">
+    <template:addCacheDependency node="${background.node}"/>
+</c:if>
+<div class="hero-unit">
+    <h1><jcr:nodeProperty node="${currentNode}" name="jcr:title"/></h1>
+    <c:if test="${not empty background}">
+        <img src="${background.node.url}" alt="">
+    </c:if>
     <p>${currentNode.properties.cast.string}</p>
 </div>
