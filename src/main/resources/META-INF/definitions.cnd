@@ -29,10 +29,15 @@
 
  [jnt:bootstrapTabularList] > jnt:tabularList, jmix:layoutComponentContent, jmix:manuallyOrderable
   orderable
-  - tabsPosition (string, choicelist[resourceBundle]) = 'top' mandatory < 'left', 'top', 'right', 'below'
-  - fadeIn (boolean) = true autocreated mandatory
+  - tabsPosition (string, choicelist[resourceBundle]) = 'top' indexed=no mandatory < 'left', 'top', 'right', 'below'
+  - fadeIn (boolean) = true autocreated mandatory indexed=no
 
 [jnt:bootstrapCollapseList] > jnt:tabularList, jmix:layoutComponentContent, jmix:manuallyOrderable
   orderable
+
+[jmix:bootstrapCarouselInterval] mixin
+itemtype=options
+extends = jmix:list
+ - interval (long) = 5000 indexed=no autocreated mandatory
 
 [jnt:testBootstrap] > jnt:content, jmix:basicContent
