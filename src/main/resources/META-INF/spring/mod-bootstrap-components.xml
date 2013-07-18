@@ -10,5 +10,28 @@
             </map>
         </property>
     </bean>
-
+    <bean id="Toolbar.Item.BootstrapSearchForm" class="org.jahia.services.uicomponents.bean.toolbar.Item">
+        <property name="actionItem">
+            <bean class="org.jahia.ajax.gwt.client.widget.toolbar.action.NewContentActionItem">
+                <property name="nodeTypes" value="jnt:bootstrapMenuSimpleSearchForm"/>
+                <property name="parentTypes" value="jnt:page"/>
+            </bean>
+        </property>
+        <property name="titleKey" value="bootstrapComponents.new.bootstrapMenuSimpleSearchForm"/>
+        <property name="icon" value="/modules/newsletter/icons/newNewsletter"/>
+        <property name="parent" value="editmode.tabs[0].treeContextMenu"/>
+        <property name="positionAfter" value="Toolbar.Item.NavMenuText"/>
+    </bean>
+    <bean id="Toolbar.Item.BootstrapLoginForm" class="org.jahia.services.uicomponents.bean.toolbar.Item">
+        <property name="actionItem">
+            <bean class="org.jahia.ajax.gwt.client.widget.toolbar.action.NewContentActionItem">
+                <property name="nodeTypes" value="jnt:bootstrapMenuLoginForm"/>
+                <property name="parentTypes" value="jnt:page"/>
+            </bean>
+        </property>
+        <property name="titleKey" value="bootstrapComponents.new.bootstrapMenuLoginForm"/>
+        <property name="icon" value="/modules/newsletter/icons/newNewsletter"/>
+        <property name="parent" value="editmode.tabs[0].treeContextMenu"/>
+        <property name="positionAfter" value="Toolbar.Item.BootstrapSearchForm"/>
+    </bean>
 </beans>

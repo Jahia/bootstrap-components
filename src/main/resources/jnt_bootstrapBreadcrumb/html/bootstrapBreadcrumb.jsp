@@ -56,7 +56,7 @@
         </c:forEach>
         <c:if test="${not jcr:isNodeType(renderContext.mainResource.node, 'jnt:page')}">
             <c:set var="pageNode" value="${renderContext.mainResource.node}"/>
-            <li>
+            <li><span class="divider">${currentNode.properties.divider.string}</span>
                 <c:if test="${displayLinkOnCurrentPage.boolean}">
                 <a href="${url.base}${pageNode.path}.html">
                     </c:if> <c:out value="${functions:abbreviate(renderContext.mainResource.node.displayableName,15,30,'...')}" /> <c:if test="${displayLinkOnCurrentPage.boolean}">

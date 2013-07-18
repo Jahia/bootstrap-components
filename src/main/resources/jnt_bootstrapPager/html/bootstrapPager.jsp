@@ -54,7 +54,7 @@
             <c:choose>
                 <c:when test="${not empty moduleMap.displaySearchParams}">
                     <c:set var="searchUrl"><search:searchUrl/>&</c:set>
-                    <c:url value="${searchUrl}" context="/" var="basePaginationUrl">
+                    <c:url value="${searchUrl}" var="basePaginationUrl">
                         <c:if test="${not empty param}">
                             <c:forEach items="${param}" var="extraParam">
                                 <c:if test="${extraParam.key ne beginid and extraParam.key ne endid and extraParam.key ne pagesizeid and !fn:startsWith(extraParam.key, 'src_')}">
@@ -84,7 +84,7 @@
             <div class="${currentNode.properties.paginationAlignment.string} pagination ${currentNode.properties.paginationSize.string}"><!--start pagination-->
             <ul>
 
-            <c:url value="${basePaginationUrl}" context="/" var="previousUrl">
+            <c:url value="${basePaginationUrl}" var="previousUrl">
                 <c:param name="${beginid}" value="${(moduleMap.currentPage-2) * moduleMap.pageSize }"/>
                 <c:param name="${endid}" value="${ (moduleMap.currentPage-1)*moduleMap.pageSize-1}"/>
                 <c:param name="${pagesizeid}" value="${moduleMap.pageSize}"/>
@@ -116,7 +116,7 @@
         </c:choose>
         <c:forEach begin="${paginationBegin}" end="${paginationEnd}" var="i">
             <c:if test="${i != moduleMap.currentPage}">
-                <c:url value="${basePaginationUrl}" context="/" var="paginationPageUrl">
+                <c:url value="${basePaginationUrl}" var="paginationPageUrl">
                     <c:param name="${beginid}" value="${ (i-1) * moduleMap.pageSize }"/>
                     <c:param name="${endid}" value="${ i*moduleMap.pageSize-1}"/>
                     <c:param name="${pagesizeid}" value="${moduleMap.pageSize}"/>
@@ -131,7 +131,7 @@
         </c:forEach>
 
 
-        <c:url value="${basePaginationUrl}" context="/" var="nextUrl">
+        <c:url value="${basePaginationUrl}" var="nextUrl">
             <c:param name="${beginid}" value="${ moduleMap.currentPage * moduleMap.pageSize }"/>
             <c:param name="${endid}" value="${ (moduleMap.currentPage+1)*moduleMap.pageSize-1}"/>
             <c:param name="${pagesizeid}" value="${moduleMap.pageSize}"/>
