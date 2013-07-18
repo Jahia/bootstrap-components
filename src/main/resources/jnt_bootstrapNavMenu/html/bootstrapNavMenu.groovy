@@ -157,7 +157,7 @@ printMenu = { node, navMenuLevel, omitFormatting ->
 
     if (navMenuLevel == 1) {
         if (responsive && responsive.boolean) {
-            print("</div>");
+            print("</div></div>");
         }
         print("</div></div>");
     }
