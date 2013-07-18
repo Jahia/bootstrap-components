@@ -6,6 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="uiComponents" uri="http://www.jahia.org/tags/uiComponentsLib" %>
 <%@ taglib prefix="bootstrap" uri="http://www.jahia.org/tags/bootstrapLib" %>
+<%@ taglib prefix="search" uri="http://www.jahia.org/tags/search" %>
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
 <%--@elvariable id="out" type="java.io.PrintWriter"--%>
 <%--@elvariable id="script" type="org.jahia.services.render.scripting.Script"--%>
@@ -54,7 +55,7 @@
             <c:choose>
                 <c:when test="${not empty moduleMap.displaySearchParams}">
                     <c:set var="searchUrl"><search:searchUrl/>&</c:set>
-                    <c:url value="${searchUrl}" context="/" var="basePaginationUrl">
+                    <c:url value="${searchUrl}" var="basePaginationUrl">
                         <c:if test="${not empty param}">
                             <c:forEach items="${param}" var="extraParam">
                                 <c:if test="${extraParam.key ne beginid and extraParam.key ne endid and extraParam.key ne pagesizeid and !fn:startsWith(extraParam.key, 'src_')}">
@@ -83,7 +84,7 @@
             <c:set target="${moduleMap}" property="basePaginationUrl" value="${basePaginationUrl}"/>
             <ul class="pager">
 
-            <c:url value="${basePaginationUrl}" context="/" var="previousUrl">
+            <c:url value="${basePaginationUrl}" var="previousUrl">
                 <c:param name="${beginid}" value="${(moduleMap.currentPage-2) * moduleMap.pageSize }"/>
                 <c:param name="${endid}" value="${ (moduleMap.currentPage-1)*moduleMap.pageSize-1}"/>
                 <c:param name="${pagesizeid}" value="${moduleMap.pageSize}"/>
@@ -95,7 +96,7 @@
 
 
 
-            <c:url value="${basePaginationUrl}" context="/" var="nextUrl">
+            <c:url value="${basePaginationUrl}" var="nextUrl">
                 <c:param name="${beginid}" value="${ moduleMap.currentPage * moduleMap.pageSize }"/>
                 <c:param name="${endid}" value="${ (moduleMap.currentPage+1)*moduleMap.pageSize-1}"/>
                 <c:param name="${pagesizeid}" value="${moduleMap.pageSize}"/>
