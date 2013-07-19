@@ -14,14 +14,16 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <bootstrap:addCSS />
+<jcr:nodeProperty node="${currentNode}" name="span" var="span"/>
+<jcr:nodeProperty node="${currentNode}" name="offset" var="offset"/>
 <c:if test="${editableModule}">
     <template:addResources type="javascript" resources="jquery.min.js,bootstrapConfig.js"/>
-    <jcr:nodeProperty node="${currentNode}" name="span" var="span"/>
-    <jcr:nodeProperty node="${currentNode}" name="offset" var="offset"/>
     <c:url var="currentNodeUrl" value="${url.base}${functions:escapePath(currentNode.path)}"/>
     <button class="btn btn-mini${span.long eq 1 ? ' disabled' : '' }" type="button"<c:if test="${span.long gt 1}"> onclick="updateCell('${currentNodeUrl}', ${span.long - 1}, null)"</c:if>><i class="icon-minus"></i></button>
     <button class="btn btn-mini" type="button" onclick="updateCell('${currentNodeUrl}', ${span.long + 1}, null)"><i class="icon-plus"></i></button>
     <button class="btn btn-mini${offset.long eq 0 ? ' disabled' : '' }" type="button"<c:if test="${offset.long gt 0}"> onclick="updateCell('${currentNodeUrl}', null, ${offset.long - 1})"</c:if>><i class="icon-indent-right"></i></button>
     <button class="btn btn-mini" type="button" onclick="updateCell('${currentNodeUrl}', null, ${offset.long + 1})"><i class="icon-indent-left"></i></button>
 </c:if>
+<c:set scope="request" var="bootstrapColumnSize" value="${span.long}"/>
 <template:area path="${currentNode.name}" areaAsSubNode="true"/>
+<c:remove var="bootstrapColumnSize" scope="request"/>
