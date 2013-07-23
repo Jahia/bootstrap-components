@@ -27,7 +27,7 @@
  - paginationSize (string,choicelist[resourceBundle]) indexed=no < '', 'pagination-large', 'pagination-small', 'pagination-mini'
  - paginationAlignment (string,choicelist[resourceBundle]) indexed=no < '', 'pagination-centered', 'pagination-right'
 
- [jnt:bootstrapTabularList] > jnt:tabularList, jmix:layoutComponentContent, jmix:manuallyOrderable
+[jnt:bootstrapTabularList] > jnt:tabularList, jmix:layoutComponentContent, jmix:manuallyOrderable
   orderable
   - tabsPosition (string, choicelist[resourceBundle]) = 'top' indexed=no mandatory < 'left', 'top', 'right', 'below'
   - fadeIn (boolean) = true autocreated mandatory indexed=no
@@ -40,9 +40,11 @@ itemtype=options
 extends = jmix:list
  - interval (long) = 5000 indexed=no autocreated mandatory
 
- [jnt:bootstrapMenuSimpleSearchForm] > jnt:content, mix:title, jmix:queryContent, jmix:navMenuItem, jmix:link
+[jnt:bootstrapMenuSimpleSearchForm] > jnt:content, mix:title, jmix:queryContent, jmix:navMenuItem, jmix:link
  - result (weakreference) mandatory < jnt:page
 
- [jnt:bootstrapMenuLoginForm] > jnt:content, mix:title, jmix:formContent, jmix:navMenuItem, jmix:link
+[jnt:bootstrapMenuLoginForm] > jnt:content, mix:title, jmix:formContent, jmix:navMenuItem, jmix:link
+
+[jnt:bootstrapCommentsList] > jnt:content, jmix:bindedComponent, jmix:list, jmix:socialComponent
 
 [jnt:testBootstrap] > jnt:content, jmix:basicContent
