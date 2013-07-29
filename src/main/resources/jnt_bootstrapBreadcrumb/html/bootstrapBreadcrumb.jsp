@@ -45,23 +45,20 @@
             </c:choose>
             <c:if test="${displayPage}">
                 <li <c:if test="${status.last}">class="active"</c:if>>
-                    <c:if
-                            test="${renderContext.mainResource.node.path ne pageNode.path || displayLinkOnCurrentPage.boolean}">
-                    <a href="<c:url value='${url.base}${pageNode.path}.html'/>">
-                        </c:if> <c:out value="${pageNode.properties['jcr:title'].string}" /> <c:if
-                            test="${renderContext.mainResource.node.path ne pageNode.path || displayLinkOnCurrentPage.boolean}">
-                    </a>
-                    </c:if><c:if test="${not status.last}"><span class="divider">${currentNode.properties.divider.string}</span></c:if></li>
+                    <c:if test="${renderContext.mainResource.node.path ne pageNode.path || displayLinkOnCurrentPage.boolean}"><a href="<c:url value='${url.base}${pageNode.path}.html'/>"></c:if>
+                        <c:out value="${pageNode.properties['jcr:title'].string}" />
+                    <c:if test="${renderContext.mainResource.node.path ne pageNode.path || displayLinkOnCurrentPage.boolean}"></a></c:if>
+                    <c:if test="${not status.last}"><span class="divider">${currentNode.properties.divider.string}</span></c:if>
+                </li>
             </c:if>
         </c:forEach>
         <c:if test="${not jcr:isNodeType(renderContext.mainResource.node, 'jnt:page')}">
             <c:set var="pageNode" value="${renderContext.mainResource.node}"/>
             <li><span class="divider">${currentNode.properties.divider.string}</span>
-                <c:if test="${displayLinkOnCurrentPage.boolean}">
-                <a href="${url.base}${pageNode.path}.html">
-                    </c:if> <c:out value="${functions:abbreviate(renderContext.mainResource.node.displayableName,15,30,'...')}" /> <c:if test="${displayLinkOnCurrentPage.boolean}">
-                </a>
-                </c:if></li>
+                <c:if test="${displayLinkOnCurrentPage.boolean}"><a href="${url.base}${pageNode.path}.html"></c:if>
+                <c:out value="${functions:abbreviate(renderContext.mainResource.node.displayableName,15,30,'...')}" />
+                <c:if test="${displayLinkOnCurrentPage.boolean}"></a></c:if>
+            </li>
         </c:if>
     </ul>
 </c:if>
