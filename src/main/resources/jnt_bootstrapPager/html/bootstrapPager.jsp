@@ -91,7 +91,7 @@
                 <c:param name="${pagesizeid}" value="${moduleMap.pageSize}"/>
             </c:url>
             <li <c:if test="${empty moduleMap.currentPage or moduleMap.currentPage le 1}">class="disabled"</c:if>>
-                <a href="${fn:escapeXml(previousUrl)}">&laquo;</a>
+                <a href="${empty moduleMap.currentPage or moduleMap.currentPage le 1 ? '#' : fn:escapeXml(previousUrl)}">&laquo;</a>
             </li>
         </c:if>
         <c:if test="${empty nbOfPages}">
@@ -138,7 +138,7 @@
             <c:param name="${pagesizeid}" value="${moduleMap.pageSize}"/>
         </c:url>
         <li <c:if test="${moduleMap.currentPage ge moduleMap.nbPages}"> class="disabled" </c:if>>
-            <a href="${fn:escapeXml(nextUrl)}">&raquo;</a>
+            <a href="${moduleMap.currentPage ge moduleMap.nbPages ? '#' : fn:escapeXml(nextUrl)}">&raquo;</a>
         </li>
         </ul>
         </div>
