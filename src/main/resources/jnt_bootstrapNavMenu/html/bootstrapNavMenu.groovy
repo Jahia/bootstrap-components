@@ -6,15 +6,12 @@ import org.jahia.taglibs.jcr.node.JCRTagUtils
 
 import javax.jcr.ItemNotFoundException
 
-title = currentNode.properties['jcr:title']
 baseline = currentNode.properties['j:baselineNode']
 maxDepth = currentNode.properties['j:maxDepth']
 startLevel = currentNode.properties['j:startLevel']
 styleName = currentNode.properties['j:styleName']
 layoutID = currentNode.properties['j:layoutID']
-option = currentNode.properties['option']
-responsive = currentNode.properties['responsive']
-inverse = currentNode.properties['inverse']
+position = currentNode.properties['position']
 // menuItemView = currentNode.properties['j:menuItemView'] ignored
 
 def base;
@@ -31,43 +28,6 @@ startLevelValue = startLevel ? startLevel.long : 0
 def empty = true
 def printMenu;
 printMenu = { node, navMenuLevel, omitFormatting ->
-    if (navMenuLevel == 1) {
-        print("<div");
-        if (layoutID) {
-            print(" id=\"${layoutID.string}\"");
-        }
-        print(" class=\"navbar");
-        if (option && !"".equals(option.string)) {
-            print(" " + option.string);
-        }
-        if (inverse && inverse.boolean) {
-            print(" navbar-inverse");
-        }
-        if (styleName) {
-            print(" ${styleName.string}");
-        }
-        print("\">");
-        print("<div class=\"navbar-inner\">");
-
-        if (responsive && responsive.boolean) {
-            print("<div class=\"container\">");
-            print("<a class=\"btn btn-navbar\" data-toggle=\"collapse\" data-target=\".nav-collapse\">");
-            print("<span class=\"icon-bar\"></span>");
-            print("<span class=\"icon-bar\"></span>");
-            print("<span class=\"icon-bar\"></span>");
-            print("<span class=\"icon-bar\"></span>");
-            print("</a>");
-        }
-
-        if (title) {
-            print("<a class=\"brand\" href=\"" + node.url + "\">${Functions.escapeXml(title.string)}</a>")
-        }
-
-        if (responsive && responsive.boolean) {
-            print("<div class=\"nav-collapse collapse\">");
-        }
-    }
-
     firstEntry = true;
 
     if (node) {
@@ -100,7 +60,23 @@ printMenu = { node, navMenuLevel, omitFormatting ->
                     if (render != "") {
                         if (firstEntry) {
                             empty = false;
-                            print("<ul class=\"" + (navMenuLevel == 1 ? "nav": "dropdown-menu") + "\">");
+                            print("<ul");
+                            if (navMenuLevel == 1 && layoutID) {
+                                print(" id=\"${layoutID.string}\"");
+                            }
+                            print(" class=\"");
+                            if (navMenuLevel == 1) {
+                                print("nav");
+                                if (position && !"".equals(position.string)) {
+                                    print(" pull-${position.string}");
+                                }
+                                if (styleName) {
+                                    print(" ${styleName.string}");
+                                }
+                            } else {
+                                print("dropdown-menu");
+                            }
+                            print("\">");
                             if (navMenuLevel == 2) {
                                 Resource parentResource = new Resource(node, "html", "menuElement", currentResource.getContextConfiguration());
                                 def parentRender = RenderService.getInstance().render(parentResource, renderContext);
@@ -150,18 +126,17 @@ printMenu = { node, navMenuLevel, omitFormatting ->
         }
 
         if (empty && renderContext.editMode) {
-            print "<ul class=\"nav\"><li class=\"active\"><a onclick=\"return false;\" href=\"#\">Page1</a></li><li><a onclick=\"return false;\" href=\"#\">Page2</a></li><li><a onclick=\"return false;\" href=\"#\">Page3</a></li></ul>"
+            print "<ul class=\"nav";
+            if (position) {
+                print(" pull-${position.string}");
+            }
+            if (styleName) {
+                print(" ${styleName.string}");
+            }
+            print "\"><li class=\"active\"><a onclick=\"return false;\" href=\"#\">Page1</a></li><li><a onclick=\"return false;\" href=\"#\">Page2</a></li><li><a onclick=\"return false;\" href=\"#\">Page3</a></li></ul>"
             empty = false;
         }
     }
-
-    if (navMenuLevel == 1) {
-        if (responsive && responsive.boolean) {
-            print("</div></div>");
-        }
-        print("</div></div>");
-    }
-
 }
 // Add dependencies to parent of main resource so that we are aware of new pages at sibling level
 try {

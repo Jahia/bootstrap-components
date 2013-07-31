@@ -9,7 +9,12 @@
 <template:addCacheDependency uuid="${currentNode.properties.result.string}"/>
 <c:if test="${not empty currentNode.properties.result.node}">
     <c:url value='${url.base}${currentNode.properties.result.node.path}.html' var="searchUrl"/>
-    <s:form method="post" class="navbar-search pull-right" action="${searchUrl}">
+    <jcr:nodeProperty node="${currentNode}" name="position" var="position"/>
+    <c:set var="pullClass" value="" />
+    <c:if test="${not empty position}">
+        <c:set var="pullClass" value=" pull-${position.string}" />
+    </c:if>
+    <s:form method="post" class="navbar-search${pullClass}" action="${searchUrl}">
         <fmt:message key='search.startSearching' var="startSearching"/>
         <s:term match="all_words" id="searchTerm" value="${startSearching}" searchIn="siteContent,tags"
                 onfocus="if(this.value=='${startSearching}')this.value='';"

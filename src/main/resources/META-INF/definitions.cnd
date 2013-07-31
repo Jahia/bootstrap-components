@@ -18,10 +18,18 @@
 [jnt:bootstrapBreadcrumb] > jnt:pageBreadcrumb
  - divider (string) indexed=no
 
-[jnt:bootstrapNavMenu] > jnt:navMenu
+[jmix:bootstrapNavBarItem] mixin
+ - position (string, choicelist[resourceBundle]) indexed=no < '', 'left', 'right'
+
+[jnt:bootstrapNavBar] > jnt:content, mix:title, jmix:siteComponent
+ orderable
  - option (string,choicelist[resourceBundle]) indexed=no < '', 'navbar-fixed-top', 'navbar-fixed-bottom', 'navbar-static-top'
  - responsive (boolean) indexed=no
  - inverse (boolean) indexed=no
+ - j:styleName (string) indexed=no
+ + * (jmix:bootstrapNavBarItem) = jmix:bootstrapNavBarItem
+
+[jnt:bootstrapNavMenu] > jnt:navMenu, jmix:bootstrapNavBarItem
 
 [jnt:bootstrapPager] > jnt:pager
  - paginationSize (string,choicelist[resourceBundle]) indexed=no < '', 'pagination-large', 'pagination-small', 'pagination-mini'
@@ -40,10 +48,10 @@ itemtype=options
 extends = jmix:list
  - interval (long) = 5000 indexed=no autocreated mandatory
 
-[jnt:bootstrapMenuSimpleSearchForm] > jnt:content, mix:title, jmix:queryContent, jmix:navMenuItem, jmix:link
+[jnt:bootstrapMenuSimpleSearchForm] > jnt:content, mix:title, jmix:queryContent, jmix:bootstrapNavBarItem, jmix:link
  - result (weakreference) mandatory < jnt:page
 
-[jnt:bootstrapMenuLoginForm] > jnt:content, mix:title, jmix:formContent, jmix:navMenuItem, jmix:link
+[jnt:bootstrapMenuLoginForm] > jnt:content, mix:title, jmix:formContent, jmix:bootstrapNavBarItem, jmix:link
 
 [jnt:bootstrapCommentsList] > jnt:content, jmix:bindedComponent, jmix:list, jmix:socialComponent
 

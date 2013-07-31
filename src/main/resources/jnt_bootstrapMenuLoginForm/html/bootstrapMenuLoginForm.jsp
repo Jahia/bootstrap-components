@@ -17,13 +17,18 @@
 
 <bootstrap:addCSS/>
 <template:addResources type="javascript" resources="bootstrap-alert.js"/>
+<jcr:nodeProperty node="${currentNode}" name="position" var="position"/>
+<c:set var="pullClass" value="" />
+<c:if test="${not empty position}">
+    <c:set var="pullClass" value=" pull-${position.string}" />
+</c:if>
 <c:if test="${!renderContext.loggedIn || currentAliasUser.username eq 'guest'}">
     <script type="text/javascript">
         document.onkeydown = function (e) {
             if ((e || window.event).keyCode == 13) document.loginForm.submit();
         };
     </script>
-    <ui:loginArea class="navbar-form pull-left">
+    <ui:loginArea class="navbar-form${pullClass}">
         <ui:isLoginError var="loginResult">
             <div class="alert alert-error">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -50,9 +55,9 @@
 </c:if>
 <c:if test="${renderContext.loggedIn &&  !(currentAliasUser.username eq 'guest')}">
     <jcr:node var="user" path="${renderContext.user.localPath}"/>
-    <form action='<c:url value="${url.logout}"/>' class="navbar-form">
-        <label class="navbar-text">${jcr:userFullName(user)}<c:if test="${!empty currentAliasUser}">&nbsp;(as&nbsp;${currentAliasUser.username})</c:if><button type="submit" class="btn btn-mini btn-link"><fmt:message key="label.logout"/></button>
-        </label>
+    <form action='<c:url value="${url.logout}"/>' class="navbar-form${pullClass}">
+        <!--p class="navbar-text"-->${jcr:userFullName(user)}<c:if test="${!empty currentAliasUser}">&nbsp;(as&nbsp;${currentAliasUser.username})</c:if><!--/p-->
+        <button type="submit" class="btn"><fmt:message key="label.logout"/></button>
     </form>
 
 </c:if>
