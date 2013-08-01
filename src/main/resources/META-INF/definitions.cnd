@@ -54,5 +54,3 @@ extends = jmix:list
 [jnt:bootstrapMenuLoginForm] > jnt:content, mix:title, jmix:formContent, jmix:bootstrapNavBarItem, jmix:link
 
 [jnt:bootstrapCommentsList] > jnt:content, jmix:bindedComponent, jmix:list, jmix:socialComponent
-
-[jnt:testBootstrap] > jnt:content, jmix:basicContent
