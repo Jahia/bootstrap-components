@@ -30,7 +30,6 @@
 <c:set var="activatedTab"
        value="${not empty cookie['bootstrapTabularList-activatedTab'] ? cookie['bootstrapTabularList-activatedTab'].value : ''}"/>
 
-<c:if test="${renderContext.editMode}">
     <template:addResources type="inlinejavascript">
 
         <script type="text/javascript">
@@ -51,7 +50,7 @@
         </script>
 
     </template:addResources>
-</c:if>
+
 
 <c:if test="${not renderContext.editMode && not empty param['bootstrapTab']}">
     <template:addResources type="inlinejavascript">
