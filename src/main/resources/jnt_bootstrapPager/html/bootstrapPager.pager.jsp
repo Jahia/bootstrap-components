@@ -84,7 +84,7 @@
             <c:set target="${moduleMap}" property="basePaginationUrl" value="${basePaginationUrl}"/>
             <ul class="pager">
 
-            <c:url value="${basePaginationUrl}" var="previousUrl">
+            <c:url value="${basePaginationUrl}" var="previousUrl" context="/">
                 <c:param name="${beginid}" value="${(moduleMap.currentPage-2) * moduleMap.pageSize }"/>
                 <c:param name="${endid}" value="${ (moduleMap.currentPage-1)*moduleMap.pageSize-1}"/>
                 <c:param name="${pagesizeid}" value="${moduleMap.pageSize}"/>
@@ -92,11 +92,10 @@
             <li <c:if test="${empty moduleMap.currentPage or moduleMap.currentPage le 1}">class="disabled"</c:if>>
                 <a href="${fn:escapeXml(previousUrl)}"><fmt:message key="pagination.previous"/></a>
             </li>
-        </c:if>
 
 
 
-            <c:url value="${basePaginationUrl}" var="nextUrl">
+            <c:url value="${basePaginationUrl}" var="nextUrl" context="/">
                 <c:param name="${beginid}" value="${ moduleMap.currentPage * moduleMap.pageSize }"/>
                 <c:param name="${endid}" value="${ (moduleMap.currentPage+1)*moduleMap.pageSize-1}"/>
                 <c:param name="${pagesizeid}" value="${moduleMap.pageSize}"/>
@@ -107,6 +106,7 @@
         </ul>
         <c:set target="${moduleMap}" property="usePagination" value="false"/>
         <c:remove var="listTemplate"/>
+        </c:if>
         <!--stop pagination-->
     </c:if>
 </c:if>

@@ -80,70 +80,69 @@
                 </c:otherwise>
             </c:choose>
 
-
             <c:set target="${moduleMap}" property="basePaginationUrl" value="${basePaginationUrl}"/>
             <div class="${currentNode.properties.paginationAlignment.string} pagination ${currentNode.properties.paginationSize.string}"><!--start pagination-->
-            <ul>
+                <ul>
 
-            <c:url value="${basePaginationUrl}" var="previousUrl">
-                <c:param name="${beginid}" value="${(moduleMap.currentPage-2) * moduleMap.pageSize }"/>
-                <c:param name="${endid}" value="${ (moduleMap.currentPage-1)*moduleMap.pageSize-1}"/>
-                <c:param name="${pagesizeid}" value="${moduleMap.pageSize}"/>
-            </c:url>
-            <li <c:if test="${empty moduleMap.currentPage or moduleMap.currentPage le 1}">class="disabled"</c:if>>
-                <a href="${empty moduleMap.currentPage or moduleMap.currentPage le 1 ? '#' : fn:escapeXml(previousUrl)}">&laquo;</a>
-            </li>
+                    <c:url value="${basePaginationUrl}" var="previousUrl" context="/">
+                        <c:param name="${beginid}" value="${(moduleMap.currentPage-2) * moduleMap.pageSize }"/>
+                        <c:param name="${endid}" value="${ (moduleMap.currentPage-1)*moduleMap.pageSize-1}"/>
+                        <c:param name="${pagesizeid}" value="${moduleMap.pageSize}"/>
+                    </c:url>
+                    <li <c:if test="${empty moduleMap.currentPage or moduleMap.currentPage le 1}">class="disabled"</c:if>>
+                        <a href="${empty moduleMap.currentPage or moduleMap.currentPage le 1 ? '#' : fn:escapeXml(previousUrl)}">&laquo;</a>
+                    </li>
+                    <c:if test="${empty nbOfPages}">
+                        <c:set var="nbOfPages" value="5"/>
+                    </c:if>
+                    <c:choose>
+                        <c:when test="${nbOfPages > 1}">
+                            <c:set var="paginationBegin"
+                                   value="${moduleMap.currentPage < nbOfPages ? 1 : moduleMap.currentPage - (nbOfPages - 2)}"/>
+                        </c:when>
+                        <c:otherwise>
+                            <c:set var="paginationBegin" value="${moduleMap.currentPage}"/>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose>
+                        <c:when test="${nbOfPages > 1}">
+                            <c:set var="paginationEnd"
+                                   value="${(paginationBegin + (nbOfPages-1)) > moduleMap.nbPages ? moduleMap.nbPages : (paginationBegin + (nbOfPages-1))}"/>
+                        </c:when>
+                        <c:otherwise>
+                            <c:set var="paginationEnd" value="${moduleMap.currentPage}"/>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:forEach begin="${paginationBegin}" end="${paginationEnd}" var="i">
+                        <c:if test="${i != moduleMap.currentPage}">
+                            <c:url value="${basePaginationUrl}" var="paginationPageUrl"  context="/">
+                                <c:param name="${beginid}" value="${ (i-1) * moduleMap.pageSize }"/>
+                                <c:param name="${endid}" value="${ i*moduleMap.pageSize-1}"/>
+                                <c:param name="${pagesizeid}" value="${moduleMap.pageSize}"/>
+                            </c:url>
+                            <li>
+                                <a href="${fn:escapeXml(paginationPageUrl)}"> ${ i }</a>
+                            </li>
+                        </c:if>
+                        <c:if test="${i == moduleMap.currentPage}">
+                            <li class="active"><span>${ i }</span></li>
+                        </c:if>
+                    </c:forEach>
+
+
+                    <c:url value="${basePaginationUrl}" var="nextUrl"  context="/">
+                        <c:param name="${beginid}" value="${ moduleMap.currentPage * moduleMap.pageSize }"/>
+                        <c:param name="${endid}" value="${ (moduleMap.currentPage+1)*moduleMap.pageSize-1}"/>
+                        <c:param name="${pagesizeid}" value="${moduleMap.pageSize}"/>
+                    </c:url>
+                    <li <c:if test="${moduleMap.currentPage ge moduleMap.nbPages}"> class="disabled" </c:if>>
+                        <a href="${moduleMap.currentPage ge moduleMap.nbPages ? '#' : fn:escapeXml(nextUrl)}">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+            <c:set target="${moduleMap}" property="usePagination" value="false"/>
+            <c:remove var="listTemplate"/>
+            <!--stop pagination-->
         </c:if>
-        <c:if test="${empty nbOfPages}">
-            <c:set var="nbOfPages" value="5"/>
-        </c:if>
-        <c:choose>
-            <c:when test="${nbOfPages > 1}">
-                <c:set var="paginationBegin"
-                       value="${moduleMap.currentPage < nbOfPages ? 1 : moduleMap.currentPage - (nbOfPages - 2)}"/>
-            </c:when>
-            <c:otherwise>
-                <c:set var="paginationBegin" value="${moduleMap.currentPage}"/>
-            </c:otherwise>
-        </c:choose>
-        <c:choose>
-            <c:when test="${nbOfPages > 1}">
-                <c:set var="paginationEnd"
-                       value="${(paginationBegin + (nbOfPages-1)) > moduleMap.nbPages ? moduleMap.nbPages : (paginationBegin + (nbOfPages-1))}"/>
-            </c:when>
-            <c:otherwise>
-                <c:set var="paginationEnd" value="${moduleMap.currentPage}"/>
-            </c:otherwise>
-        </c:choose>
-        <c:forEach begin="${paginationBegin}" end="${paginationEnd}" var="i">
-            <c:if test="${i != moduleMap.currentPage}">
-                <c:url value="${basePaginationUrl}" var="paginationPageUrl">
-                    <c:param name="${beginid}" value="${ (i-1) * moduleMap.pageSize }"/>
-                    <c:param name="${endid}" value="${ i*moduleMap.pageSize-1}"/>
-                    <c:param name="${pagesizeid}" value="${moduleMap.pageSize}"/>
-                </c:url>
-                <li>
-                    <a href="${fn:escapeXml(paginationPageUrl)}"> ${ i }</a>
-                </li>
-            </c:if>
-            <c:if test="${i == moduleMap.currentPage}">
-                <li class="active"><span>${ i }</span></li>
-            </c:if>
-        </c:forEach>
-
-
-        <c:url value="${basePaginationUrl}" var="nextUrl">
-            <c:param name="${beginid}" value="${ moduleMap.currentPage * moduleMap.pageSize }"/>
-            <c:param name="${endid}" value="${ (moduleMap.currentPage+1)*moduleMap.pageSize-1}"/>
-            <c:param name="${pagesizeid}" value="${moduleMap.pageSize}"/>
-        </c:url>
-        <li <c:if test="${moduleMap.currentPage ge moduleMap.nbPages}"> class="disabled" </c:if>>
-            <a href="${moduleMap.currentPage ge moduleMap.nbPages ? '#' : fn:escapeXml(nextUrl)}">&raquo;</a>
-        </li>
-        </ul>
-        </div>
-        <c:set target="${moduleMap}" property="usePagination" value="false"/>
-        <c:remove var="listTemplate"/>
-        <!--stop pagination-->
     </c:if>
 </c:if>
