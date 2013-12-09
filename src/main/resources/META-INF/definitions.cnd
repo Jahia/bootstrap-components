@@ -15,6 +15,32 @@
  - offset (long) = 0 indexed=no
  + * (jmix:droppableContent) = jmix:droppableContent
 
+[jmix:bootstrapFullComponentRowPredefined] > jmix:templateMixin  mixin
+ extends=jnt:bootstrapFullComponentRow,jnt:bootstrapFullComponent
+- layout (string, choicelist[resourceBundle,moduleImage='png']) = '4_8' autocreated < '2_10','3_9','4_8','4_4_4','3_6_3','3_3_3_3','6_6','8_4', '9_3','10_2','12','0'
+
+[jmix:bootstrapFullComponentRowCustom] > jmix:templateMixin  mixin
+ extends=jnt:bootstrapFullComponentRow,jnt:bootstrapFullComponent
+- columns (string) = 'span4, span2 offset1, span3 offset2'
+
+[jmix:bootstrapFullComponentAdvancedProps] mixin
+ extends=jnt:bootstrapFullComponent
+ itemtype=content
+  - sectionElement (string, choicelist[resourceBundle]) = 'section' autocreated < 'section', 'article', 'header', 'footer', 'aside', 'nav', 'div'
+  - sectionCssClass (string)
+  - containerType (string, choicelist[resourceBundle]) = 'fluid' autocreated < 'fixed', 'fluid'
+  - containerCssClass (string)
+
+[jnt:bootstrapFullComponentRow] > jnt:content, jmix:studioLayout
+- rowType (string, choicelist[bootstrapFullComponentRowInitializer,resourceBundle]) = 'predefined' autocreated < 'predefined', 'custom'
++ * (jmix:droppableContent) = jmix:droppableContent version
+
+[jnt:bootstrapFullComponent] > jnt:content, jmix:layoutComponentContent
+ orderable
+ - rowType (string, choicelist[bootstrapFullComponentRowInitializer,resourceBundle]) = 'predefined' autocreated < 'predefined', 'custom'
+ + * (jmix:droppableContent) = jmix:droppableContent version
+ + * (jnt:bootstrapFullComponentRow)
+
 [jnt:bootstrapBreadcrumb] > jnt:pageBreadcrumb
  - divider (string) indexed=no
 
