@@ -67,7 +67,7 @@
     </template:addResources>
 </c:if>
 
-<div class="tabbable ${not empty tabsPositionCss ? tabsPositionCss : ''}" id="jnt_bootstrapTabularList-${currentNode.identifier}">
+<div class="tabbable jnt_bootstrapTabularList ${not empty tabsPositionCss ? tabsPositionCss : ''}" id="jnt_bootstrapTabularList-${currentNode.identifier}">
 
     <c:if test="${tabsPosition ne 'below' and tabsPosition ne 'right'}">
 
