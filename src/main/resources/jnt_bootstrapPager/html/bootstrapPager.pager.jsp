@@ -5,7 +5,6 @@
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="uiComponents" uri="http://www.jahia.org/tags/uiComponentsLib" %>
-<%@ taglib prefix="bootstrap" uri="http://www.jahia.org/tags/bootstrapLib" %>
 <%@ taglib prefix="search" uri="http://www.jahia.org/tags/search" %>
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
 <%--@elvariable id="out" type="java.io.PrintWriter"--%>
@@ -18,7 +17,6 @@
 <%--@elvariable id="moduleMap" type="java.util.Map"--%>
 <c:set var="boundComponent"
        value="${uiComponents:getBoundComponent(currentNode, renderContext, 'j:bindedComponent')}"/>
-<bootstrap:addCSS/>
 <c:if test="${not empty boundComponent and jcr:isNodeType(boundComponent, 'jmix:list')}">
     <template:addCacheDependency node="${boundComponent}"/>
     <c:set var="pagesizeid" value="pagesize${boundComponent.identifier}"/>
