@@ -17,7 +17,6 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
-<template:addResources type="javascript" resources="bootstrap-collapse.js,bootstrap-transition.js"/>
 <c:set var="subLists" value="${jcr:getChildrenOfType(currentNode, 'jnt:contentList')}"/>
 
 <div class="accordion" id="jnt_bootstrapCollapseList${fn:replace(currentNode.identifier,'-','')}">
