@@ -79,4 +79,6 @@ extends = jmix:list
 
 [jnt:bootstrapMenuLoginForm] > jnt:content, mix:title, jmix:formContent, jmix:bootstrapNavBarItem, jmix:link
 
+[jnt:bootstrapMenuLanguageSwitcher] > jnt:languageSwitcher, jmix:bootstrapNavBarItem
+
 [jnt:bootstrapCommentsList] > jnt:content, jmix:bindedComponent, jmix:list, jmix:socialComponent
