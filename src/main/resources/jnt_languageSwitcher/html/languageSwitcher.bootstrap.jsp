@@ -14,6 +14,7 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <template:addResources type="css" resources="languageSwitchingLinks.css"/>
+<template:addResources type="javascript" resources="bootstrap-dropdown.js"/>
 <c:set var="linkKind" value="${currentNode.properties.typeOfDisplay.string}"/>
 <c:choose>
     <c:when test="${linkKind eq 'flag'}">

@@ -14,6 +14,7 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <%--@elvariable id="currentAliasUser" type="org.jahia.services.usermanager.JahiaUser"--%>
 
+<template:addResources type="javascript" resources="bootstrap-alert.js"/>
 <jcr:nodeProperty node="${currentNode}" name="position" var="position"/>
 <c:set var="pullClass" value="" />
 <c:if test="${not empty position}">

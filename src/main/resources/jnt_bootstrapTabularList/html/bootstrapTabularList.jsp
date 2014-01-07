@@ -17,6 +17,7 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
+<template:addResources type="javascript" resources="bootstrap-tab.js,bootstrap-transition.js"/>
 <c:set var="tabsPosition"
        value="${currentNode.properties['tabsPosition'].string ne 'top' ? currentNode.properties['tabsPosition'].string : ''}"/>
 <c:set var="fadeIn" value="${currentNode.properties['fadeIn'].boolean}"/>
