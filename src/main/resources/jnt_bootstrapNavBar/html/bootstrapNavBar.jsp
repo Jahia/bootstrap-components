@@ -34,9 +34,7 @@
             </a>
     </c:if>
 
-        <c:if test="${not empty title}">
-            <a class="brand" href="${renderContext.site.home.url}">${fn:escapeXml(title.string)}</a>
-        </c:if>
+        <a class="brand" href="${renderContext.site.home.url}"><c:if test="${not empty title}">${fn:escapeXml(title.string)}</c:if></a>
 
         <c:if test="${not empty responsive and responsive.boolean}">
             <div class="nav-collapse collapse">
