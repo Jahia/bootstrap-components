@@ -8,7 +8,7 @@ span.fancy-more {
     width:30px;
     height:30px;
     display:block;
-    background: url(../img/slider-more.png) no-repeat top left;
+    background: url("../images/slider-more.png") no-repeat top left;
     opacity:0;
     transition-duration: 0.4s;
     transition-property: opacity;
