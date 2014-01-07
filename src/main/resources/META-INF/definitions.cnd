@@ -82,3 +82,6 @@ extends = jmix:list
 [jnt:bootstrapMenuLanguageSwitcher] > jnt:languageSwitcher, jmix:bootstrapNavBarItem
 
 [jnt:bootstrapCommentsList] > jnt:content, jmix:bindedComponent, jmix:list, jmix:socialComponent
+
+[jnt:bootstrapCommentsGallery] > jnt:content, jmix:bindedComponent, jmix:list, jmix:multimediaContent
+ - folder (weakreference, picker[type='folder']) i18n mandatory < jnt:folder
