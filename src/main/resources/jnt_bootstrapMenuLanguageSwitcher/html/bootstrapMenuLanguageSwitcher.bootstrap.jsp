@@ -13,6 +13,13 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
+
+<jcr:nodeProperty node="${currentNode}" name="position" var="position"/>
+<c:set var="pullClass" value="" />
+<c:if test="${not empty position}">
+    <c:set var="pullClass" value=" pull-${position.string}" />
+</c:if>
+
 <template:addResources type="css" resources="languageSwitchingLinks.css"/>
 <c:set var="linkKind" value="${currentNode.properties.typeOfDisplay.string}"/>
 <c:choose>
@@ -28,7 +35,8 @@
 </c:choose>
 
 <ui:initLangBarAttributes activeLanguagesOnly="${renderContext.liveMode}"/>
-<div class="btn-group btn-mini">
+<ul class="nav${pullClass}">
+<li class="dropdown">
     <c:forEach items="${requestScope.languageCodes}" var="language">
         <ui:displayLanguageSwitchLink languageCode="${language}" display="false" urlVar="switchUrl"
                                       var="renderedLanguage"
@@ -39,7 +47,7 @@
                     <span class='flag flag_${language}${flag}_off'></span>
                 </c:set>
             </c:if>
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">${renderedLanguage}<span
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">${renderedLanguage}<span
                     class="caret"></span></a>
         </c:if>
     </c:forEach>
@@ -60,4 +68,5 @@
             </c:if>
         </c:forEach>
     </ul>
-</div>
+</li>
+</ul>

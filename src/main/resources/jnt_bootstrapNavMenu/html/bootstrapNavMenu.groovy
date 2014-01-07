@@ -144,4 +144,3 @@ try {
 } catch (ItemNotFoundException e) {
 }
 printMenu(base, 1, false)
-print(RenderService.getInstance().render(new Resource(currentNode, "html", "addResources", currentResource.getContextConfiguration()), renderContext));
