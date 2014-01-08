@@ -52,6 +52,7 @@
  - option (string,choicelist[resourceBundle]) indexed=no < '', 'navbar-fixed-top', 'navbar-fixed-bottom', 'navbar-static-top'
  - responsive (boolean) indexed=no
  - inverse (boolean) indexed=no
+ - fluid (boolean) indexed=no
  - j:styleName (string) indexed=no
  + * (jmix:bootstrapNavBarItem) = jmix:bootstrapNavBarItem
 
@@ -85,3 +86,4 @@ extends = jmix:list
 
 [jnt:bootstrapCommentsGallery] > jnt:content, jmix:bindedComponent, jmix:list, jmix:multimediaContent
  - folder (weakreference, picker[type='folder']) i18n mandatory < jnt:folder
+ - fluid (boolean) indexed=no

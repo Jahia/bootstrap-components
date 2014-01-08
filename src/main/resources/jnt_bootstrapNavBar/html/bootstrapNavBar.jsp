@@ -25,7 +25,7 @@
 <div class="${navbarClasses}">
     <div class="navbar-inner">
     <c:if test="${not empty responsive and responsive.boolean}">
-        <div class="container">
+        <div class="container${currentNode.properties.fluid.boolean ? '-fluid' : ''}">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
