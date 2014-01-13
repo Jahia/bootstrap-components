@@ -37,7 +37,7 @@
 <jcr:nodeProperty var="image" node="${currentNode}" name="image"/>
 
 <a class="btn btn-primary" href="${action}" title="<fmt:message key="bootstrapComponents.news.back"/>">
-    <i class="icon-chevron-left"></i> <fmt:message key="bootstrapComponents.news.back"/> </a>
+    <i class="icon-chevron-left icon-white"></i> <fmt:message key="bootstrapComponents.news.back"/> </a>
 <article class="news">
     <div class="media-date media-date-big media-date-big-nomarginright "><span class="month">${newsMonth}</span><span class="day">${newsDay}</span> <span class="year">${newsYear}</span></div>
     <div class="media-body"><h1>${title.string}</h1></div>
