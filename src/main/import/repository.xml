@@ -17,8 +17,15 @@
                                       jcr:primaryType="jnt:translation"
                                       jcr:title="bootstrapFull"/>
                     <pagecontent jcr:primaryType="jnt:contentList">
+                            <full jcr:mixinTypes="jmix:bootstrapFullComponentRowPredefined"
+                        jcr:primaryType="jnt:bootstrapFullComponent"
+                        layout="12"
+                        rowType="predefined">
+                                <full jcr:primaryType="jnt:contentList">
                             <main-resource-display j:mainResourceView="bootstrapFull"
                                          jcr:primaryType="jnt:mainResourceDisplay"/>
+                                </full>
+                            </full>
                     </pagecontent>
                 </bootstrapfull>
             </templates>
