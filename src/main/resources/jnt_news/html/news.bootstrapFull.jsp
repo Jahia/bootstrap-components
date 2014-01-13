@@ -8,7 +8,8 @@
 <%@ taglib prefix="functions" uri="http://www.jahia.org/tags/functions" %>
 <%@ taglib prefix="bootstrap" uri="http://www.jahia.org/tags/bootstrapLib" %>
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
-<%--@elvariable id="newsImage" type="org.jahia.services.content.JCRPropertyWrapper"--%>
+<%--@elvariable id="propertyDefinition" type="org.jahia.services.content.nodetypes.ExtendedPropertyDefinition"--%>
+<%--@elvariable id="type" type="org.jahia.services.content.nodetypes.ExtendedNodeType"--%>
 <%--@elvariable id="out" type="java.io.PrintWriter"--%>
 <%--@elvariable id="script" type="org.jahia.services.render.scripting.Script"--%>
 <%--@elvariable id="scriptInfo" type="java.lang.String"--%>
@@ -33,26 +34,17 @@
 <fmt:formatDate value="${newsDate.time}" pattern="MMMM" var="newsMonth"/>
 <fmt:formatDate value="${newsDate.time}" pattern="d" var="newsDay"/>
 <fmt:formatDate value="${newsDate.time}" pattern="yyyy" var="newsYear"/>
-
 <jcr:nodeProperty var="image" node="${currentNode}" name="image"/>
-<c:url value='${url.base}${currentNode.path}.bootstrapfull.html' var="linkUrl" />
 
-<article>
-    <div class="media-date media-date-big media-date-big-nomarginright "><span class="month">${newsMonth}</span><span
-            class="day">${newsDay}</span> <span class="year">${newsYear}</span></div>
-    <c:if test="${!empty image}">
-        <c:choose>
-            <c:when test="${jcr:isNodeType(image.node, 'jmix:thumbnail')}">
-                <a class="media-photo media-photo-margintop" href="#"><img src="${image.node.thumbnailUrls['thumbnail']}" alt="alt"></a>
-            </c:when>
-            <c:otherwise>
-                <a class="media-photo media-photo-margintop" href="#"><img src="${image.node.url}" alt="${image.node.displayableName}" /></a>
-            </c:otherwise>
-        </c:choose>
+<a class="btn btn-primary" href="${action}" title="<fmt:message key="bootstrapComponents.news.back"/>">
+    <i class="icon-chevron-left"></i> <fmt:message key="bootstrapComponents.news.back"/> </a>
+<article class="news">
+    <div class="media-date media-date-big media-date-big-nomarginright "><span class="month">${newsMonth}</span><span class="day">${newsDay}</span> <span class="year">${newsYear}</span></div>
+    <div class="media-body"><h1>${title.string}</h1></div>
+    <c:if test="${! empty image}">
+        <figure><img src="<c:url value="${image.node.url}" context="/"/>" alt="${image.node.displayableName}"></figure>
     </c:if>
-    <div class="media-body media-body-border-left media-body-marginleft150">
-        <h2 class="media-heading"><a href="${linkUrl}">${title.string}</a></h2>
-
-        <p>${functions:abbreviate(functions:removeHtmlTags(newsDesc.string),400,450,'...')}</p>
+    <div class="media-text-big">
+        ${newsDesc.string}
     </div>
 </article>

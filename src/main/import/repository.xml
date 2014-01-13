@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content xmlns:j="http://www.jahia.org/jahia/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0">
     <modules jcr:primaryType="jnt:modules">
-        <bootstrap-components j:dependencies="default search tabularList"
-                            j:moduleType="module"
-                            j:title="Jahia Boostrap Components"
-                            jcr:mixinTypes="jmix:hasExternalProviderExtension"
-                            jcr:primaryType="jnt:module">
-                
-                <templates j:rootTemplatePath="/base" jcr:primaryType="jnt:templatesFolder"/>
-                
-            </bootstrap-components>
+        <bootstrap-components j:dependencies="bootstrap default search tabularList"
+                              j:moduleType="module"
+                              j:title="Jahia Boostrap Components"
+                              jcr:mixinTypes="jmix:hasExternalProviderExtension"
+                              jcr:primaryType="jnt:module">
+
+            <templates j:rootTemplatePath="/base" jcr:primaryType="jnt:templatesFolder">
+                    <bootstrapfull j:applyOn="jnt:news"
+                               j:defaultTemplate="false"
+                               j:hiddenTemplate="false"
+                               jcr:primaryType="jnt:contentTemplate">
+                    <j:translation_en jcr:language="en"
+                                 jcr:mixinTypes="mix:title"
+                                      jcr:primaryType="jnt:translation"
+                                      jcr:title="bootstrapFull"/>
+                    <pagecontent jcr:primaryType="jnt:contentList">
+                            <main-resource-display j:mainResourceView="bootstrapFull"
+                                         jcr:primaryType="jnt:mainResourceDisplay"/>
+                    </pagecontent>
+                </bootstrapfull>
+            </templates>
+
+        </bootstrap-components>
     </modules>
 </content>

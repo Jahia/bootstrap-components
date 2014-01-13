@@ -17,26 +17,21 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <bootstrap:addCSS/>
+<template:addResources type="css" resources="bootstrapComponents.css"/>
 
 <jcr:nodeProperty node="${currentNode}" name="jcr:title" var="newsTitle"/>
 <c:set var="newsTitleEscaped" value="${not empty newsTitle ? fn:escapeXml(newsTitle.string) : ''}"/>
 <jcr:nodeProperty node="${currentNode}" name="date" var="newsDate"/>
 <jcr:nodeProperty node="${currentNode}" name="desc" var="newsDesc"/>
 <jcr:nodeProperty node="${currentNode}" name="image" var="newsImage"/>
+<c:url value='${url.base}${currentNode.url}.bootstrapfull.html' var="linkUrl" />
 
-<div class="media">
-    <!--start newsListItem -->
-    <c:url value="${newsImage.node.thumbnailUrls['thumbnail2']}" var="imageUrl"/>
-    <a href="<c:url value='${url.base}${currentNode.path}.html'/>" class="pull-left">
-        <img src="${imageUrl}" alt="${newsTitleEscaped}" class="img-rounded"/>
-    </a>
-
+<article>
     <div class="media-body">
-        <h4 class="media-heading">
-            <a href="<c:url value='${url.base}${currentNode.path}.html'/>">${newsTitleEscaped}</a>
-        </h4>
-
-        <p>${functions:abbreviate(functions:removeHtmlTags(newsDesc.string),400,420,'...')}</p>
-        <small class="pull-right"><span class="muted"><fmt:formatDate value="${newsDate.time}" type="both" dateStyle="long" timeStyle="short"/></span></small>
+        <h3 class="media-heading"><a href="${linkUrl}">${newsTitle.string}</a></h3>
+        <fmt:message key="bootstrapComponents.news.datePattern" var="datePattern"/>
+        <p class="media-info">
+            <span class="label label-media-info"><i class="icon-calendar"></i> <fmt:formatDate value="${newsDate.time}" pattern="${datePattern}"/></span>
+        </p>
     </div>
-</div>
+</article>
