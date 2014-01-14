@@ -48,4 +48,3 @@
         ${newsDesc.string}
     </div>
 </article>
-

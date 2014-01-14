@@ -28,11 +28,10 @@
 
 <article>
     <div class="media-body">
-        <h3 class="media-heading"><a href="${linkUrl}">${newsTitle.string}</a></h3>
+        <h3 class="media-heading-small"><a href="${linkUrl}">${newsTitle.string}</a></h3>
         <fmt:message key="bootstrapComponents.news.datePattern" var="datePattern"/>
         <p class="media-info">
-            <span class="label label-media-info"><i class="icon-calendar"></i> <fmt:formatDate value="${newsDate.time}" pattern="${datePattern}"/></span>
+            <span class="label label-media-info"><i class="icon-calendar icon-white"></i> <fmt:formatDate value="${newsDate.time}" pattern="${datePattern}"/></span>
         </p>
     </div>
 </article>
-
