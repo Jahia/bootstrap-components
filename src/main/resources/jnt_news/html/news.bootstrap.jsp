@@ -56,3 +56,4 @@
         <p>${functions:abbreviate(functions:removeHtmlTags(newsDesc.string),400,450,'...')}</p>
     </div>
 </article>
+
