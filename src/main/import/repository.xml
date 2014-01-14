@@ -8,7 +8,7 @@
                               jcr:primaryType="jnt:module">
 
             <templates j:rootTemplatePath="/base" jcr:primaryType="jnt:templatesFolder">
-                    <bootstrapfull j:applyOn="jnt:news"
+                    <bootstrapfull j:applyOn="jnt:event jnt:news"
                                j:defaultTemplate="false"
                                j:hiddenTemplate="false"
                                jcr:primaryType="jnt:contentTemplate">

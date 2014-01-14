@@ -29,35 +29,16 @@
 <jcr:nodeProperty node="${currentNode}" name="body" var="body"/>
 
 <jcr:nodeProperty node="${currentNode}" name="startDate" var="startDate"/>
-<fmt:formatDate value="${startDate.time}" pattern="MMMM" var="startDateMonth"/>
-<fmt:formatDate value="${startDate.time}" pattern="d" var="startDateDay"/>
-<fmt:formatDate value="${startDate.time}" pattern="yyyy" var="startDateYear"/>
 
 <c:url value='${url.base}${currentNode.path}.bootstrapfull.html' var="linkUrl" />
 
 <article>
-    <div class="media-date media-date-big media-date-big-nomarginright "><span class="month">${startDateMonth}</span><span
-            class="day">${startDateDay}</span> <span class="year">${startDateYear}</span></div>
-    <c:if test="${! empty currentNode.properties.endDate}">
-        <fmt:formatDate value="${currentNode.properties.endDate.time}" pattern="MMMM" var="endDateMonth"/>
-        <fmt:formatDate value="${currentNode.properties.endDate.time}" pattern="d" var="endDateDay"/>
-        <fmt:formatDate value="${currentNode.properties.endDate.time}" pattern="yyyy" var="endDateYear"/>
-        <div class="media-date media-date-big media-date-big-end media-date-big-margintop"><span
-                class="month">${endDateMonth}</span><span class="day">${endDateDay}</span> <span
-                class="year">${endDateYear}</span></div>
-    </c:if>
-    <p class="media-info">
-        <span class="label"><i class="icon-calendar"></i><fmt:message key='jnt_event.eventsType.${currentNode.properties.eventsType.string}'/></span>
-    <span class="label"><i
-            class="icon-map-marker"></i>${currentNode.properties.location.string}</span></p>
-    <jcr:nodeProperty node="${currentNode}" name="j:defaultCategory" var="cat"/>
-    <p class="media-info"><c:forEach items="${cat}" var="category" varStatus="status">
-        <c:if test="${not status.first}">,&nbsp;</c:if>
-        <i class="icon-tag"></i> <span class="text-info">${category.node.displayableName}</span>
-    </c:forEach> </p>
-    <div class="media-body media-body-border-left media-body-marginleft150">
-        <h2 class="media-heading"><a href="${linkUrl}">${title.string}</a></h2>
-
-        <p>${functions:abbreviate(functions:removeHtmlTags(body.string),400,450,'...')}</p>
+    <div class="media-body">
+        <h3 class="media-heading"><a href="${linkUrl}">${title}</a></h3>
+        <fmt:message key="bootstrapComponents.event.datePattern" var="datePattern"/>
+        <p class="media-info">
+            <span class="label label-media-info"><i class="iconcalendar"></i> <fmt:formatDate value="${currentNode.properties.startDate.time}" pattern="${datePattern}"/></span>
+            <p class="media-info"><span class="label"><i class="icon-calendar"></i><fmt:message key='jnt_event.eventsType.${currentNode.properties.eventsType.string}'/></span></p>
+        </p>
     </div>
 </article>

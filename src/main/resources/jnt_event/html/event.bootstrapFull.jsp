@@ -26,6 +26,7 @@
 </c:if>
 
 <jcr:nodeProperty node="${currentNode}" name="jcr:title" var="title"/>
+<c:set var="newsTitleEscaped" value="${not empty title ? fn:escapeXml(title.string) : ''}"/>
 <jcr:nodeProperty node="${currentNode}" name="body" var="body"/>
 
 <jcr:nodeProperty node="${currentNode}" name="startDate" var="startDate"/>
@@ -33,7 +34,15 @@
 <fmt:formatDate value="${startDate.time}" pattern="d" var="startDateDay"/>
 <fmt:formatDate value="${startDate.time}" pattern="yyyy" var="startDateYear"/>
 
-<c:url value='${url.base}${currentNode.path}.bootstrapfull.html' var="linkUrl" />
+<c:if test="${!empty jcr:getParentOfType(renderContext.mainResource.node, 'jnt:page')}">
+    <c:url value='${url.base}${jcr:getParentOfType(renderContext.mainResource.node, "jnt:page").path}.html' var="action"/>
+</c:if>
+<c:if test="${empty jcr:getParentOfType(renderContext.mainResource.node, 'jnt:page')}">
+    <c:set var="action">javascript:history.back()</c:set>
+</c:if>
+
+<a class="btn btn-primary" href="${action}" title="<fmt:message key="bootstrapComponents.events.back"/>">
+    <i class="icon-chevron-left icon-white"></i> <fmt:message key="bootstrapComponents.events.back"/> </a>
 
 <article>
     <div class="media-date media-date-big media-date-big-nomarginright "><span class="month">${startDateMonth}</span><span
@@ -46,18 +55,17 @@
                 class="month">${endDateMonth}</span><span class="day">${endDateDay}</span> <span
                 class="year">${endDateYear}</span></div>
     </c:if>
-    <p class="media-info">
-        <span class="label"><i class="icon-calendar"></i><fmt:message key='jnt_event.eventsType.${currentNode.properties.eventsType.string}'/></span>
+    <div class="media-body"><h1>${title.string}</h1></div>
+    <p class="media-info"><span class="label"><i class="icon-calendar"></i><fmt:message key='jnt_event.eventsType.${currentNode.properties.eventsType.string}'/></span>
     <span class="label"><i
-            class="icon-map-marker"></i>${currentNode.properties.location.string}</span></p>
+            class="icon-map-marker"></i>${currentNode.properties.location.string}</span>
     <jcr:nodeProperty node="${currentNode}" name="j:defaultCategory" var="cat"/>
     <p class="media-info"><c:forEach items="${cat}" var="category" varStatus="status">
         <c:if test="${not status.first}">,&nbsp;</c:if>
         <i class="icon-tag"></i> <span class="text-info">${category.node.displayableName}</span>
     </c:forEach> </p>
-    <div class="media-body media-body-border-left media-body-marginleft150">
-        <h2 class="media-heading"><a href="${linkUrl}">${title.string}</a></h2>
 
-        <p>${functions:abbreviate(functions:removeHtmlTags(body.string),400,450,'...')}</p>
+    <div class="media-text-big">
+        ${body.string}
     </div>
 </article>
