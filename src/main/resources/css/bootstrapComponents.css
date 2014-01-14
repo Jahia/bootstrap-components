@@ -1,12 +1,12 @@
 /*media-list*/
 /*media-small*/
-li.media-small .media-photo {
+.media-photo-small {
     height: 60px;
     width: 60px;
     float: left;
     margin: 0 5px 5px 0;
 }
-li.media-small .media-photo img {
+.media-photo-small img {
     height: 60px;
     width: 60px;
 }
@@ -25,13 +25,13 @@ li.media-small .media-photo img {
 .media-body-marginleft75 {
     margin-left: 75px;
 }
-li.media-small .media-body-no-photo {
+.media-body-no-photo-small {
     margin-left: 65px;
 }
-li.media-small .media-heading {
+.media-heading-small {
     margin: 0;
 }
-li.media-small h3 {
+h3.media-heading-small{
     font-size: 18px;
     line-height: 20px;
 }
@@ -54,17 +54,17 @@ li.media-small:last-child,
 li.media-medium:last-child {
     border-bottom: none;
 }
-li.media-medium .media-photo {
+.media-photo-medium {
     height: 60px;
     width: 60px;
     float: left;
     margin: 0 15px 15px 0px;
 }
-li.media-medium .media-photo img {
+.media-photo-medium img {
     height: 60px;
     width: 60px;
 }
-li.media-medium .media-photo-margintop {
+.media-photo-margintop-medium {
     margin-top: 75px;
 }
 .media-photo-big {
