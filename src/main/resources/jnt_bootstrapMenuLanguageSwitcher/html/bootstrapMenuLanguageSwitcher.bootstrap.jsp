@@ -35,6 +35,7 @@
 </c:choose>
 
 <ui:initLangBarAttributes activeLanguagesOnly="${renderContext.liveMode}"/>
+<c:if test="${not empty requestScope.languageCodes}">
 <ul class="nav${pullClass}">
 <li class="dropdown">
     <c:forEach items="${requestScope.languageCodes}" var="language">
@@ -70,3 +71,4 @@
     </ul>
 </li>
 </ul>
+</c:if>
