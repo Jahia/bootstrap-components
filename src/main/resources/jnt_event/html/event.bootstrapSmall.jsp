@@ -34,11 +34,11 @@
 
 <article>
     <div class="media-body">
-        <h3 class="media-heading"><a href="${linkUrl}">${title}</a></h3>
+        <h3 class="media-heading"><a href="${linkUrl}">${title.string}</a></h3>
         <fmt:message key="bootstrapComponents.event.datePattern" var="datePattern"/>
         <p class="media-info">
-            <span class="label label-media-info"><i class="iconcalendar"></i> <fmt:formatDate value="${currentNode.properties.startDate.time}" pattern="${datePattern}"/></span>
-            <p class="media-info"><span class="label"><i class="icon-calendar"></i><fmt:message key='jnt_event.eventsType.${currentNode.properties.eventsType.string}'/></span></p>
+            <span class="label label-media-info"><i class="icon-calendar icon-white"></i>&nbsp;<fmt:formatDate value="${currentNode.properties.startDate.time}" pattern="${datePattern}"/></span>
+            <span class="label label-info"><i class="icon-star icon-white"></i>&nbsp;<fmt:message key='jnt_event.eventsType.${currentNode.properties.eventsType.string}'/></span>
         </p>
     </div>
 </article>

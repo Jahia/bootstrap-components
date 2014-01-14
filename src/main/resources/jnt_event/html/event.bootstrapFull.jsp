@@ -55,16 +55,17 @@
                 class="month">${endDateMonth}</span><span class="day">${endDateDay}</span> <span
                 class="year">${endDateYear}</span></div>
     </c:if>
-    <div class="media-body"><h1>${title.string}</h1></div>
-    <p class="media-info"><span class="label"><i class="icon-calendar"></i><fmt:message key='jnt_event.eventsType.${currentNode.properties.eventsType.string}'/></span>
-    <span class="label"><i
-            class="icon-map-marker"></i>${currentNode.properties.location.string}</span>
-    <jcr:nodeProperty node="${currentNode}" name="j:defaultCategory" var="cat"/>
-    <p class="media-info"><c:forEach items="${cat}" var="category" varStatus="status">
-        <c:if test="${not status.first}">,&nbsp;</c:if>
-        <i class="icon-tag"></i> <span class="text-info">${category.node.displayableName}</span>
-    </c:forEach> </p>
-
+    <div class="media-body">
+        <h1>${title.string}</h1>
+        <p class="media-info"><span class="label label-info"><i class="icon-star icon-white"></i>&nbsp;<fmt:message key='jnt_event.eventsType.${currentNode.properties.eventsType.string}'/></span>
+        <span class="label label-info"><i
+                class="icon-map-marker icon-white"></i>&nbsp;${currentNode.properties.location.string}</span>
+        <jcr:nodeProperty node="${currentNode}" name="j:defaultCategory" var="cat"/>
+        <p class="media-info"><c:forEach items="${cat}" var="category" varStatus="status">
+            <c:if test="${not status.first}">,&nbsp;</c:if>
+            <i class="icon-tag"></i>&nbsp;<span class="text-info">${category.node.displayableName}</span>
+        </c:forEach> </p>
+    </div>
     <div class="media-text-big">
         ${body.string}
     </div>
