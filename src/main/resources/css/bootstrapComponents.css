@@ -116,3 +116,67 @@ div.media-date .year {
     display: block;
     font-size: 11px;
 }
+
+/*mini teasers*/
+.mini-teaser {
+    text-align: center;
+}
+.mini-teaser h3 {
+    text-transform: uppercase;
+}
+.icon-mini-teaser {
+    font-size: 100px;
+    display: block;
+}
+.mini-teaser {
+    text-align: center;
+}
+/*teasers*/
+.teaser .teaser-text {
+    margin: 15px auto 0;
+    width: 90%;
+}
+.teaser-view2 {
+    text-align: center;
+    position: relative;
+}
+.teaser-view2 .flag {
+    margin-bottom: 3px;
+}
+.teaser .teaser-text h3 {
+    margin: 0;
+}
+.teaser .img-wrapper {
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+}
+.teaser .img-wrapper img {
+    position: relative;
+}
+.teaser span.circle {
+    background: rgba(98, 196, 98, 0.8);
+    width: 48px;
+    height: 48px;
+    display: none;
+    text-align: center;
+    position: absolute;
+    top: 37%;
+    left: 43%;
+    border-radius: 100%;
+}
+.teaser span.circle span.plus {
+    display: inline-block;
+    margin-top: 13px;
+    font-weight: bold;
+    color: white;
+    font-size: 32px;
+}
+.teaser:hover span.circle {
+    display: block;
+}
+.teasers-section{
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
