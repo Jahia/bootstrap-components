@@ -1,25 +1,32 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="jcr" uri="http://www.jahia.org/tags/jcr" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
-<%@ taglib prefix="bootstrap" uri="http://www.jahia.org/tags/bootstrapLib" %>
+
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
+<%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <bootstrap:addCSS/>
-<jcr:nodeProperty node="${currentNode}" name="image" var="image"/>
+<template:addResources type="css" resources="bootstrapComponents.css"/>
 
-<div class="thumbnail">
-    <img src="${image.node.thumbnailUrls['thumbnail2']}" class="img-polaroid" alt=""/>
+<c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
+<fmt:message key="bootstrapComponents.teaser.readMore" var="linkTitle"/>
+<c:url value='${url.base}${currentNode.properties.link.node.path}.html' var="linkUrl"/>
 
-    <div class="caption">
-        <h3><jcr:nodeProperty node="${currentNode}" name="jcr:title"/></h3>
-
-        <p> ${currentNode.properties.abstract.string}</p>
-        <template:addCacheDependency uuid="${currentNode.properties.link.string}"/>
-        <c:if test="${not empty currentNode.properties.link.node}">
-            <p><a href="<c:url value='${url.base}${currentNode.properties.link.node.path}.html'/>" class="btn btn-link">
-                <fmt:message key="jnt_teaser.readMore"/>
-            </a></p>
-        </c:if>
+<div class="teaser">
+    <jcr:nodeProperty var="image" node="${currentNode}" name="image"/>
+    <c:if test="${! empty image}">
+        <div class="img-wrapper">
+            <a href="${linkUrl}" title="${fn:escapeXml(linkTitle)}">
+                <img src="${image.node.url}" alt="${image.node.displayableName}">
+            <span class="circle">
+            <span class="plus">+</span>
+            </span>
+            </a>
+        </div>
+    </c:if>
+    <div class="teaser-text">
+        <a href="${linkUrl}" title="${fn:escapeXml(linkTitle)}"><h3>${title}</h3></a>
+        ${currentNode.properties.abstract.string}
     </div>
 </div>
