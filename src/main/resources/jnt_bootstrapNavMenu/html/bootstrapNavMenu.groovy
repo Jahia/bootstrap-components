@@ -1,3 +1,4 @@
+import org.apache.commons.lang.StringUtils
 import org.apache.taglibs.standard.functions.Functions
 import org.jahia.services.content.JCRContentUtils
 import org.jahia.services.render.RenderService
@@ -27,19 +28,22 @@ startLevelValue = startLevel ? startLevel.long : 0
 
 def empty = true
 def printMenu;
+def entries=0;
 printMenu = { node, navMenuLevel, omitFormatting ->
+//    System.out.println("Menu for node "+(entries++)+" "+node.path);
     firstEntry = true;
 
     if (node) {
-        children = JCRContentUtils.getChildrenOfType(node, "jmix:navMenuItem")
+        children = JCRContentUtils.getChildrenOfType(node, "jmix:navMenuItem", 0)
         def nbOfChilds = children.size();
         def closeUl = false;
         children.eachWithIndex() { menuItem, index ->
             itemPath = menuItem.path
-            inpath = renderContext.mainResource.node.path == itemPath || renderContext.mainResource.node.path.startsWith(itemPath)
+            def pathMainResource = renderContext.mainResource.node.path
+            inpath = pathMainResource == itemPath || StringUtils.substringBeforeLast(pathMainResource,"/").startsWith(itemPath)
             selected = menuItem.isNodeType("jmix:nodeReference") ?
-                renderContext.mainResource.node.path == menuItem.properties['j:node'].node.path :
-                renderContext.mainResource.node.path == itemPath
+                       pathMainResource == menuItem.properties['j:node'].node.path :
+                       pathMainResource == itemPath
             correctType = true
             if(menuItem.isNodeType("jmix:navMenu")){
                 correctType = false
@@ -54,6 +58,7 @@ printMenu = { node, navMenuLevel, omitFormatting ->
             }
             if ((startLevelValue < navMenuLevel || inpath) && correctType) {
                 hasChildren = navMenuLevel < maxDepth.long && JCRTagUtils.hasChildrenOfType(menuItem, "jnt:page,jnt:nodeLink,jnt:externalLink")
+//                System.out.println("Menu for node "+(entries++)+" "+menuItem.path);
                 if (startLevelValue < navMenuLevel) {
                     Resource resource = new Resource(menuItem, "html", (hasChildren && navMenuLevel == 1 ? "menuDropdown" : "menuElement"), currentResource.getContextConfiguration());
                     def render = RenderService.getInstance().render(resource, renderContext)
@@ -95,7 +100,7 @@ printMenu = { node, navMenuLevel, omitFormatting ->
                                 listItemCssClass = "dropdown-submenu";
                             }
                         }
-                        if (selected) {
+                        if (selected || inpath) {
                             if (!"".equals(listItemCssClass)) {
                                 listItemCssClass += " ";
                             }
