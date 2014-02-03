@@ -24,7 +24,7 @@
 <jcr:nodeProperty node="${currentNode}" name="date" var="newsDate"/>
 <jcr:nodeProperty node="${currentNode}" name="desc" var="newsDesc"/>
 <jcr:nodeProperty node="${currentNode}" name="image" var="newsImage"/>
-<c:url value='${url.base}${currentNode.url}.bootstrapfull.html' var="linkUrl" />
+<c:url value='${url.base}${currentNode.path}.bootstrapfull.html' var="linkUrl" />
 
 <article>
     <div class="media-body">
