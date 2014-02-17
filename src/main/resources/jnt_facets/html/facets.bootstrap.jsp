@@ -229,7 +229,6 @@
         </c:forEach>
         <c:if test="${not empty currentFacetLabel}">
             </ul>
-            </div>
         </c:if>
         </div>
     </c:if>
