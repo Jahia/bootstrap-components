@@ -16,44 +16,41 @@
 <template:addResources type="css" resources="Columns.css"/>
 
 <template:include view="hidden.header"/>
-<c:if test="${!empty currentNode.properties['j:columns'].string}">
-    <c:set var="columns" value="${currentNode.properties['j:columns'].string}"/>
-</c:if>
-<c:if test="${empty currentNode.properties['j:columns'].string}">
-    <c:set var="columns" value="2"/>
-</c:if>
-<c:if test="${functions:length(moduleMap.currentList) lt columns}">
-    <c:set var="columns" value="${functions:length(moduleMap.currentList)}"/>
-</c:if>
-
-<c:if test="${!empty currentNode.properties['bootstrapColumnSize'].string}">
-    <c:set var="bootstrapColumnSize" value="${currentNode.properties['bootstrapColumnSize'].string}"/>
-</c:if>
-<c:if test="${empty currentNode.properties['bootstrapColumnSize'].string}">
+<jcr:nodeProperty node="${currentNode}" name="bootstrapColumnSize" var="bootstrapColumnSize" />
+<c:set var="bootstrapColumnSize" value="${bootstrapColumnSize.long}"/>
+<c:if test="${empty bootstrapColumnSize or bootstrapColumnSize lt 1}">
     <c:set var="bootstrapColumnSize" value="12"/>
 </c:if>
 
-<c:set var="columnSize" value="${functions:round(functions:floor((bootstrapColumnSize*1.0)/(columns*1.0)))}"/>
-<c:set var="addOneToCenterColumn" value="0"/>
-<%-- If number of columns in the row is not fully divided by the numbers of columns in this view we add one to the center columns--%>
-<c:if test="${(bootstrapColumnSize*1.0)/(columns*1.0) gt columnSize}">
-    <c:set var="addOneToCenterColumn" value="1"/>
+<jcr:nodeProperty node="${currentNode}" name="j:columns" var="columns" />
+<c:set var="columns" value="${columns.long}"/>
+<c:if test="${empty columns or columns lt 2}">
+    <c:set var="columns" value="2"/>
+</c:if>
+<c:if test="${columns gt bootstrapColumnSize}">
+    <c:set var="columns" value="${bootstrapColumnSize}"/>
+</c:if>
+
+<c:set var="columnSize" value="${functions:round(functions:floor(bootstrapColumnSize / columns))}"/>
+<%-- If number of columns in the row is not fully divided by the numbers of columns in this view we add an offset to the first column to center the row --%>
+<c:if test="${bootstrapColumnSize / columns gt columnSize}">
+    <c:set var="offset" value="${functions:round(functions:floor((bootstrapColumnSize - (columns * columnSize)) / 2))}"/>
 </c:if>
 
 <c:forEach items="${moduleMap.currentList}" var="subchild" begin="${moduleMap.begin}" end="${moduleMap.end}"
            varStatus="status">
     <c:choose>
-        <c:when test="${(status.index mod columns) eq 0 or (status.index mod columns) eq (columns-1)}">
-            <c:set var="currentColumnSize" value="${columnSize}"/>
+        <c:when test="${(status.index mod columns) eq 0 and not empty offset}">
+            <c:set var="offsetClass" value="offset${offset} " />
         </c:when>
         <c:otherwise>
-            <c:set var="currentColumnSize" value="${columnSize + addOneToCenterColumn}"/>
+            <c:set var="offsetClass" value="" />
         </c:otherwise>
     </c:choose>
     <c:if test="${(status.index mod columns) eq 0 }">
         <div class="row-fluid">
     </c:if>
-    <div class="span${currentColumnSize}">
+    <div class="${offsetClass}span${columnSize}">
             <template:module node="${subchild}" view="${moduleMap.subNodesView}" editable="${moduleMap.editable}"/>
     </div>
     <c:if test="${(status.index mod columns) eq (columns-1) or status.last}">
