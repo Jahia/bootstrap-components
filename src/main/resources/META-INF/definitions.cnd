@@ -87,3 +87,9 @@ extends = jmix:list
 [jnt:bootstrapCommentsGallery] > jnt:content, jmix:bindedComponent, jmix:list, jmix:multimediaContent
  - folder (weakreference, picker[type='folder']) i18n mandatory < jnt:folder
  - fluid (boolean) indexed=no
+
+[jmix:bootstrapColumns] > jmix:templateMixin mixin
+ extends = jmix:list, jnt:area
+ itemtype = layout
+ - j:columns (long) = 2 autocreated mandatory
+ - bootstrapColumnSize (long) = 12 autocreated mandatory

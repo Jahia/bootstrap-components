@@ -26,6 +26,12 @@
     <c:set var="columns" value="${functions:length(moduleMap.currentList)}"/>
 </c:if>
 
+<c:if test="${!empty currentNode.properties['bootstrapColumnSize'].string}">
+    <c:set var="bootstrapColumnSize" value="${currentNode.properties['bootstrapColumnSize'].string}"/>
+</c:if>
+<c:if test="${empty currentNode.properties['bootstrapColumnSize'].string}">
+    <c:set var="bootstrapColumnSize" value="12"/>
+</c:if>
 
 <c:set var="columnSize" value="${functions:round(functions:floor((bootstrapColumnSize*1.0)/(columns*1.0)))}"/>
 <c:set var="addOneToCenterColumn" value="0"/>
@@ -45,7 +51,7 @@
         </c:otherwise>
     </c:choose>
     <c:if test="${(status.index mod columns) eq 0 }">
-        <div class="row">
+        <div class="row-fluid">
     </c:if>
     <div class="span${currentColumnSize}">
             <template:module node="${subchild}" view="${moduleMap.subNodesView}" editable="${moduleMap.editable}"/>
@@ -56,7 +62,7 @@
 </c:forEach>
 
 <c:if test="${moduleMap.editable and renderContext.editMode}">
-    <div class="row">
+    <div class="row-fluid">
         <div class="span${bootstrapColumnSize}">
             <template:module path="*"/>
         </div>
