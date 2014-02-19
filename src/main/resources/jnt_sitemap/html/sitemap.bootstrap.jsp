@@ -14,13 +14,13 @@
 
 <c:forEach var="level1Page" items="${jcr:getChildrenOfType(home, 'jnt:page')}" varStatus="level1Status">
     <c:if test="${level1Status.first}"><ul class="sitemap"></c:if>
-    <li><i class="icon-chevron-right"></i><a href="${level1Page.url}" title="${level1Page.displayableName}"><strong>${level1Page.displayableName}</strong></a>
+    <li><i class="icon-chevron-right"></i> <a href="${level1Page.url}" title="${level1Page.displayableName}"><strong>${level1Page.displayableName}</strong></a>
         <c:forEach var="level2Page" items="${jcr:getChildrenOfType(level1Page, 'jnt:page')}" varStatus="level2Status">
             <c:if test="${level2Status.first}"><ul></c:if>
             <li><i class="icon-file"></i><a href="${level2Page.url}" title="${level2Page.displayableName}">${level2Page.displayableName}</a>
                 <c:forEach var="level3Page" items="${jcr:getChildrenOfType(level2Page, 'jnt:page')}" varStatus="level3Status">
                     <c:if test="${level3Status.first}"><ul></c:if>
-                    <li><i class="icon-file-alt"></i><a href="${level3Page.url}" title="${level3Page.displayableName}">${level3Page.displayableName}</a></li>
+                    <li><i class=" icon-play-circle"></i> <a href="${level3Page.url}" title="${level3Page.displayableName}">${level3Page.displayableName}</a></li>
                     <c:if test="${level3Status.last}"></ul></c:if>
                 </c:forEach>
             </li>
