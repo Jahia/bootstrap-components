@@ -24,6 +24,4 @@
     <button class="btn btn-mini${offset.long eq 0 ? ' disabled' : '' }" type="button"<c:if test="${offset.long gt 0}"> onclick="updateCell('${currentNodeUrl}', null, ${offset.long - 1})"</c:if>><i class="icon-indent-right"></i></button>
     <button class="btn btn-mini" type="button" onclick="updateCell('${currentNodeUrl}', null, ${offset.long + 1})"><i class="icon-indent-left"></i></button>
 </c:if>
-<c:set scope="request" var="bootstrapColumnSize" value="${span.long}"/>
 <template:area path="${currentNode.name}" areaAsSubNode="true"/>
-<c:remove var="bootstrapColumnSize" scope="request"/>
