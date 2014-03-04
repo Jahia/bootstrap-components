@@ -23,7 +23,7 @@
         <c:set var="siteNode" value="${currentNode.resolveSite}"/>
 
         <c:if test="${! jcr:isNodeType(siteNode, 'genericmix:hideLoginButton')}">
-            <div class="login"><a href="#loginForm" role="button" data-toggle="modal"><i class="icon-user"></i><fmt:message
+            <div class="login"><a class="btn btn-primary" href="#loginForm" role="button" data-toggle="modal"><i class="icon-user icon-white"></i>&nbsp;<fmt:message
                     key="bootstrapComponents.login.title"/></a>
             </div>
 
