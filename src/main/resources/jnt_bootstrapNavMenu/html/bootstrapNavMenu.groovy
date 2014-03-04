@@ -82,14 +82,6 @@ printMenu = { node, navMenuLevel, omitFormatting ->
                                 print("dropdown-menu");
                             }
                             print("\">");
-                            if (navMenuLevel == 2) {
-                                Resource parentResource = new Resource(node, "html", "menuElement", currentResource.getContextConfiguration());
-                                def parentRender = RenderService.getInstance().render(parentResource, renderContext);
-                                if (parentRender != "") {
-                                    print("<li>" + parentRender + "</li>");
-                                    print("<li class=\"divider\"></li>");
-                                }
-                            }
                             closeUl = true;
                         }
                         def listItemCssClass = "";
