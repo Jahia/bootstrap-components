@@ -65,7 +65,7 @@
                         </p>
 
                         <p class="text-right">
-                            <button class="btn btn-primary"><i class="icon-ok"></i> <fmt:message
+                            <button class="btn btn-primary"><i class="icon-ok icon-white"></i> <fmt:message
                                     key='bootstrapComponents.login.title'/>
                             </button>
                         </p>
@@ -73,7 +73,7 @@
                     </ui:loginArea>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true"><i class="icon-remove icon-white"></i> Close</button>
                 </div>
             </div>
 
