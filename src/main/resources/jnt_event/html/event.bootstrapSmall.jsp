@@ -32,7 +32,7 @@
 
 <c:url value='${url.base}${currentNode.path}.detail.html' var="linkUrl" />
 
-<article>
+<article class="clearfix">
     <div class="media-body">
         <h3 class="media-heading"><a href="${linkUrl}">${title.string}</a></h3>
         <fmt:message key="bootstrapComponents.event.datePattern" var="datePattern"/>

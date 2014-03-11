@@ -37,7 +37,7 @@
 <jcr:nodeProperty var="image" node="${currentNode}" name="image"/>
 <c:url value='${url.base}${currentNode.path}.detail.html' var="linkUrl" />
 
-<article>
+<article class="clearfix">
     <div class="media-date media-date-big media-date-big-nomarginright "><span class="month">${newsMonth}</span><span
             class="day">${newsDay}</span> <span class="year">${newsYear}</span></div>
     <c:if test="${!empty image}">

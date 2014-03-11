@@ -26,7 +26,7 @@
 <jcr:nodeProperty node="${currentNode}" name="image" var="newsImage"/>
 <c:url value='${url.base}${currentNode.path}.detail.html' var="linkUrl" />
 
-<article>
+<article class="clearfix">
     <div class="media-body">
         <h3 class="media-heading-small"><a href="${linkUrl}">${newsTitle.string}</a></h3>
         <fmt:message key="bootstrapComponents.news.datePattern" var="datePattern"/>

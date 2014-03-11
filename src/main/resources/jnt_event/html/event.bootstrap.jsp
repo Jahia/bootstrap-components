@@ -35,7 +35,7 @@
 
 <c:url value='${url.base}${currentNode.path}.detail.html' var="linkUrl" />
 
-<article>
+<article class="clearfix">
     <div class="media-date media-date-big media-date-big-nomarginright "><span class="month">${startDateMonth}</span><span
             class="day">${startDateDay}</span> <span class="year">${startDateYear}</span></div>
     <c:if test="${! empty currentNode.properties.endDate}">

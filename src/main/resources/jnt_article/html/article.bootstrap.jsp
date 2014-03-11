@@ -30,7 +30,7 @@
 
 <c:url value='${url.base}${currentNode.path}.detail.html' var="linkUrl" />
 
-<article>
+<article class="clearfix">
     <div class="media-body media-body-border-left media-body-marginleft150">
 
         <h2 class="media-heading"><a href="${linkUrl}">${title.string}</a></h2>
