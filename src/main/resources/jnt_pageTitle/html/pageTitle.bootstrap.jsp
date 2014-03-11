@@ -24,7 +24,6 @@
     </c:choose>
 </c:if>
 <c:set var="isHome" value="${pageNode.path == renderContext.site.home.path}"/>
-${(currentNode.properties['hideInHomePage'].boolean)}
 <c:if test="${not empty pageNode && (!isHome || empty currentNode.properties['hideInHomePage'] || currentNode.properties['hideInHomePage'].boolean)}">
     <div class="page-header">
         <h1 class="pageTitle">
