@@ -11,34 +11,33 @@
  + * (jnt:bootstrapColumn) = jnt:bootstrapColumn
 
 [jnt:bootstrapColumn] > jnt:content, jmix:studioLayout
- - span (long) = 1 indexed=no
- - offset (long) = 0 indexed=no
+ - span (long) = '1' indexed=no
+ - offset (long) = '0' indexed=no
  + * (jmix:droppableContent) = jmix:droppableContent
 
-[jmix:bootstrapFullComponentRowPredefined] > jmix:templateMixin  mixin
- extends=jnt:bootstrapFullComponentRow,jnt:bootstrapFullComponent
-- layout (string, choicelist[resourceBundle,moduleImage='png']) = '4_8' autocreated < '2_10','3_9','4_8','4_4_4','3_6_3','3_3_3_3','6_6','8_4', '9_3','10_2','12','0'
+[jmix:bootstrapFullComponentRowPredefined] > jmix:templateMixin mixin
+ extends = jnt:bootstrapFullComponentRow, jnt:bootstrapFullComponent
+ - layout (string, choicelist[resourceBundle,moduleImage='png']) = '4_8' autocreated < '2_10', '3_9', '4_8', '4_4_4', '3_6_3', '3_3_3_3', '6_6', '8_4', '9_3', '10_2', '12', '0'
 
-[jmix:bootstrapFullComponentRowCustom] > jmix:templateMixin  mixin
- extends=jnt:bootstrapFullComponentRow,jnt:bootstrapFullComponent
-- columns (string) = 'span4, span2 offset1, span3 offset2'
+[jmix:bootstrapFullComponentRowCustom] > jmix:templateMixin mixin
+ extends = jnt:bootstrapFullComponentRow, jnt:bootstrapFullComponent
+ - columns (string) = 'span4, span2 offset1, span3 offset2'
 
 [jmix:bootstrapFullComponentAdvancedProps] mixin
- extends=jnt:bootstrapFullComponent
- itemtype=content
-  - sectionElement (string, choicelist[resourceBundle]) = 'section' autocreated < 'section', 'article', 'header', 'footer', 'aside', 'nav', 'div'
-  - sectionCssClass (string)
-  - containerType (string, choicelist[resourceBundle]) = 'fluid' autocreated < 'fixed', 'fluid'
-  - containerCssClass (string)
+ extends = jnt:bootstrapFullComponent
+ itemtype = content
+ - sectionElement (string, choicelist[resourceBundle]) = 'section' autocreated < 'section', 'article', 'header', 'footer', 'aside', 'nav', 'div'
+ - sectionCssClass (string)
+ - containerType (string, choicelist[resourceBundle]) = 'fluid' autocreated < 'fixed', 'fluid'
+ - containerCssClass (string)
 
 [jnt:bootstrapFullComponentRow] > jnt:content, jmix:studioLayout
-- rowType (string, choicelist[bootstrapFullComponentRowInitializer,resourceBundle]) = 'predefined' autocreated < 'predefined', 'custom'
-+ * (jmix:droppableContent) = jmix:droppableContent version
-
-[jnt:bootstrapFullComponent] > jnt:content, jmix:layoutComponentContent
- orderable
  - rowType (string, choicelist[bootstrapFullComponentRowInitializer,resourceBundle]) = 'predefined' autocreated < 'predefined', 'custom'
- + * (jmix:droppableContent) = jmix:droppableContent version
+ + * (jmix:droppableContent) = jmix:droppableContent
+
+[jnt:bootstrapFullComponent] > jnt:content, jmix:layoutComponentContent orderable
+ - rowType (string, choicelist[bootstrapFullComponentRowInitializer,resourceBundle]) = 'predefined' autocreated < 'predefined', 'custom'
+ + * (jmix:droppableContent) = jmix:droppableContent
  + * (jnt:bootstrapFullComponentRow)
 
 [jnt:bootstrapBreadcrumb] > jnt:pageBreadcrumb
@@ -47,36 +46,33 @@
 [jmix:bootstrapNavBarItem] mixin
  - position (string, choicelist[resourceBundle]) indexed=no < '', 'left', 'right'
 
-[jnt:bootstrapNavBar] > jnt:content, mix:title, jmix:siteComponent
- orderable
- - option (string,choicelist[resourceBundle]) indexed=no < '', 'navbar-fixed-top', 'navbar-fixed-bottom', 'navbar-static-top'
+[jnt:bootstrapNavBar] > jnt:content, mix:title, jmix:siteComponent, jmix:layoutComponentContent orderable
+ - option (string, choicelist[resourceBundle]) indexed=no < '', 'navbar-fixed-top', 'navbar-fixed-bottom', 'navbar-static-top'
  - responsive (boolean) indexed=no
  - inverse (boolean) indexed=no
  - fluid (boolean) indexed=no
  - j:styleName (string) indexed=no
  + * (jmix:bootstrapNavBarItem) = jmix:bootstrapNavBarItem
 
-[jnt:bootstrapNavMenu] > jnt:navMenu, jmix:bootstrapNavBarItem
+[jnt:bootstrapNavMenu] > jnt:navMenu, jmix:bootstrapNavBarItem orderable
 
 [jnt:bootstrapPager] > jnt:pager
- - paginationSize (string,choicelist[resourceBundle]) indexed=no < '', 'pagination-large', 'pagination-small', 'pagination-mini'
- - paginationAlignment (string,choicelist[resourceBundle]) indexed=no < '', 'pagination-centered', 'pagination-right'
+ - paginationSize (string, choicelist[resourceBundle]) indexed=no < '', 'pagination-large', 'pagination-small', 'pagination-mini'
+ - paginationAlignment (string, choicelist[resourceBundle]) indexed=no < '', 'pagination-centered', 'pagination-right'
 
-[jnt:bootstrapTabularList] > jnt:tabularList, jmix:layoutComponentContent, jmix:manuallyOrderable
-  orderable
-  - tabsPosition (string, choicelist[resourceBundle]) = 'top' indexed=no mandatory < 'left', 'top', 'right', 'below'
-  - fadeIn (boolean) = true autocreated mandatory indexed=no
+[jnt:bootstrapTabularList] > jnt:tabularList, jmix:layoutComponentContent, jmix:manuallyOrderable orderable
+ - tabsPosition (string, choicelist[resourceBundle]) = 'top' mandatory indexed=no < 'left', 'top', 'right', 'below'
+ - fadeIn (boolean) = 'true' mandatory autocreated indexed=no
 
-[jnt:bootstrapCollapseList] > jnt:tabularList, jmix:layoutComponentContent, jmix:manuallyOrderable
-  orderable
+[jnt:bootstrapCollapseList] > jnt:tabularList, jmix:layoutComponentContent, jmix:manuallyOrderable orderable
 
 [jmix:bootstrapCarouselInterval] mixin
-itemtype=options
-extends = jmix:list
- - interval (long) = 5000 indexed=no autocreated mandatory
+ extends = jmix:list
+ itemtype = options
+ - interval (long) = '5000' mandatory autocreated indexed=no
 
 [jnt:bootstrapMenuSimpleSearchForm] > jnt:content, mix:title, jmix:queryContent, jmix:bootstrapNavBarItem, jmix:link
- - result (weakreference) mandatory < jnt:page
+ - result (weakreference) mandatory < 'jnt:page'
 
 [jnt:bootstrapMenuLoginForm] > jnt:content, mix:title, jmix:formContent, jmix:bootstrapNavBarItem, jmix:link
 
@@ -85,11 +81,15 @@ extends = jmix:list
 [jnt:bootstrapCommentsList] > jnt:content, jmix:bindedComponent, jmix:list, jmix:socialComponent
 
 [jnt:bootstrapCommentsGallery] > jnt:content, jmix:bindedComponent, jmix:list, jmix:multimediaContent
- - folder (weakreference, picker[type='folder']) i18n mandatory < jnt:folder
+ - folder (weakreference, picker[type='folder']) mandatory internationalized < 'jnt:folder'
  - fluid (boolean) indexed=no
 
 [jmix:bootstrapColumns] > jmix:templateMixin mixin
  extends = jmix:list, jnt:area
  itemtype = layout
- - j:columns (long) = 2 autocreated mandatory
- - bootstrapColumnSize (long) = 12 autocreated mandatory
+ - j:columns (long) = '2' mandatory autocreated
+ - bootstrapColumnSize (long) = '12' mandatory autocreated
+
+[jmix:newMixin] mixin
+ - test (string)
+

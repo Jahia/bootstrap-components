@@ -26,33 +26,20 @@
 </c:if>
 
 <jcr:nodeProperty node="${currentNode}" name="jcr:title" var="title"/>
-<c:set var="newsTitleEscaped" value="${not empty title ? fn:escapeXml(title.string) : ''}"/>
-<jcr:nodeProperty node="${currentNode}" name="desc" var="newsDesc"/>
+<jcr:nodeProperty node="${currentNode}" name="intro" var="body"/>
 
-<jcr:nodeProperty node="${currentNode}" name="date" var="newsDate"/>
-<fmt:formatDate value="${newsDate.time}" pattern="MMMM" var="newsMonth"/>
-<fmt:formatDate value="${newsDate.time}" pattern="d" var="newsDay"/>
-<fmt:formatDate value="${newsDate.time}" pattern="yyyy" var="newsYear"/>
-
-<jcr:nodeProperty var="image" node="${currentNode}" name="image"/>
 <c:url value='${url.base}${currentNode.path}.detail.html' var="linkUrl" />
 
 <article>
-    <div class="media-date media-date-big media-date-big-nomarginright "><span class="month">${newsMonth}</span><span
-            class="day">${newsDay}</span> <span class="year">${newsYear}</span></div>
-    <c:if test="${!empty image}">
-        <c:choose>
-            <c:when test="${jcr:isNodeType(image.node, 'jmix:thumbnail')}">
-                <a class="media-photo media-photo-medium media-photo-margintop-medium" href="#"><img src="${image.node.thumbnailUrls['thumbnail']}" alt="alt"></a>
-            </c:when>
-            <c:otherwise>
-                <a class="media-photo media-photo-medium media-photo-margintop-medium" href="#"><img src="${image.node.url}" alt="${image.node.displayableName}" /></a>
-            </c:otherwise>
-        </c:choose>
-    </c:if>
     <div class="media-body media-body-border-left media-body-marginleft150">
-        <h2 class="media-heading"><a href="${linkUrl}">${title.string}</a></h2>
 
-        <p>${functions:abbreviate(functions:removeHtmlTags(newsDesc.string),400,450,'...')}</p>
+        <h2 class="media-heading"><a href="${linkUrl}">${title.string}</a></h2>
+        <p class="media-info">
+        <jcr:nodeProperty node="${currentNode}" name="j:defaultCategory" var="cat"/>
+        <p class="media-info"><c:forEach items="${cat}" var="category" varStatus="status">
+            <c:if test="${not status.first}">,&nbsp;</c:if>
+            <i class="icon-tag"></i> <span class="text-info">${category.node.displayableName}</span>
+        </c:forEach> </p>
+        <p>${body.string}</p>
     </div>
 </article>

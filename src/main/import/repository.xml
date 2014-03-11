@@ -2,34 +2,40 @@
 <content xmlns:j="http://www.jahia.org/jahia/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0">
     <modules jcr:primaryType="jnt:modules">
         <bootstrap-components j:dependencies="bootstrap default search tabularList"
+                            j:modulePriority="0"
                               j:moduleType="module"
                               j:title="Jahia Boostrap Components"
                               jcr:mixinTypes="jmix:hasExternalProviderExtension"
                               jcr:primaryType="jnt:module">
-
+                
             <templates j:rootTemplatePath="/base" jcr:primaryType="jnt:templatesFolder">
-                    <bootstrapfull j:applyOn="jnt:event jnt:news"
+                    <files jcr:primaryType="jnt:folder"/>
+                    <contents jcr:primaryType="jnt:contentFolder"/>
+                    <detail j:applyOn="jnt:event jnt:news"
                                j:defaultTemplate="false"
                                j:hiddenTemplate="false"
                                jcr:primaryType="jnt:contentTemplate">
                     <j:translation_en jcr:language="en"
                                  jcr:mixinTypes="mix:title"
                                       jcr:primaryType="jnt:translation"
-                                      jcr:title="bootstrapFull"/>
+                                      jcr:title="Detail"/>
                     <pagecontent jcr:primaryType="jnt:contentList">
                             <full jcr:mixinTypes="jmix:bootstrapFullComponentRowPredefined"
                         jcr:primaryType="jnt:bootstrapFullComponent"
                         layout="12"
                         rowType="predefined">
                                 <full jcr:primaryType="jnt:contentList">
-                            <main-resource-display j:mainResourceView="bootstrapFull"
+                            <main-resource-display j:mainResourceView="detail"
                                          jcr:primaryType="jnt:mainResourceDisplay"/>
                                 </full>
                             </full>
                     </pagecontent>
-                </bootstrapfull>
+                </detail>
             </templates>
 
+                <portlets jcr:primaryType="jnt:portletFolder"/>
+                <files jcr:primaryType="jnt:folder"/>
+                <contents jcr:primaryType="jnt:contentFolder"/>
         </bootstrap-components>
     </modules>
 </content>
