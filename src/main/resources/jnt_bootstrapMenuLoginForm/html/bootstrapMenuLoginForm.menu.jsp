@@ -154,7 +154,7 @@ and not jcr:isNodeType(renderContext.mainResource.node.resolveSite, 'jmix:remote
                 --%>
             <li class="divider"></li>
             <li>
-                <a href="<c:url value='${url.baseLive}${currentUser.localPath}.html?jsite=${renderContext.site.identifier}'/>">
+                <a href="<c:url value='${url.myProfile}'/>">
                     <i class="icon-user"></i>
                     <fmt:message key="bootstrapComponents.login.profile"/>
                 </a>
