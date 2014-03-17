@@ -8,10 +8,11 @@
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 
-<h2>${currentNode.properties["jcr:title"].string}</h2>
-<div class="intro">
+<h1>${currentNode.properties["jcr:title"].string}</h1>
+<span class="label label-info"><i class="icon-star icon-white"></i>&nbsp;Auteur</span>
+<h4 class="intro">
     ${currentNode.properties.intro.string}
-</div>
+</h4>
 <c:forEach items="${currentNode.nodes}" var="paragraph">
     <c:if test="${jcr:isNodeType(paragraph,'jnt:paragraph')}">
         <template:module node="${paragraph}" view="default"/>

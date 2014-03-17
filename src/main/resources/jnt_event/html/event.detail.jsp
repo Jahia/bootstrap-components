@@ -21,9 +21,6 @@
 <c:if test="${!empty jcr:getParentOfType(renderContext.mainResource.node, 'jnt:page')}">
     <c:url value='${url.base}${jcr:getParentOfType(renderContext.mainResource.node, "jnt:page").path}.html' var="action"/>
 </c:if>
-<c:if test="${empty jcr:getParentOfType(renderContext.mainResource.node, 'jnt:page')}">
-    <c:set var="action">javascript:history.back()</c:set>
-</c:if>
 
 <jcr:nodeProperty node="${currentNode}" name="jcr:title" var="title"/>
 <c:set var="newsTitleEscaped" value="${not empty title ? fn:escapeXml(title.string) : ''}"/>
