@@ -71,10 +71,10 @@
  itemtype = options
  - interval (long) = '5000' mandatory autocreated indexed=no
 
-[jnt:bootstrapMenuSimpleSearchForm] > jnt:content, mix:title, jmix:queryContent, jmix:bootstrapNavBarItem, jmix:link
+[jnt:bootstrapMenuSimpleSearchForm] > jnt:content, mix:title, jmix:queryContent, jmix:bootstrapNavBarItem, jmix:link, jmix:studioOnly
  - result (weakreference) mandatory < 'jnt:page'
 
-[jnt:bootstrapMenuLoginForm] > jnt:content, mix:title, jmix:formContent, jmix:bootstrapNavBarItem, jmix:link
+[jnt:bootstrapMenuLoginForm] > jnt:content, mix:title, jmix:formContent, jmix:bootstrapNavBarItem, jmix:link, jmix:studioOnly
 
 [jnt:bootstrapMenuLanguageSwitcher] > jnt:languageSwitcher, jmix:bootstrapNavBarItem
 
