@@ -19,7 +19,7 @@
 <jcr:nodeProperty var="folder" node="${currentNode}" name="folder"/>
 <c:choose>
     <c:when test="${! empty folder.node}">
-        <div class="container${currentNode.properties.fluid.boolean ? '-fluid' : ''}">
+        <div>
             <div class="flexslider carousel">
                 <c:forEach items="${jcr:getChildrenOfType(folder.node, 'jmix:image')}" var="image" varStatus="status">
                     <c:choose>

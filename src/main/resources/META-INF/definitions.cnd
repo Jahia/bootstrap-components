@@ -82,7 +82,7 @@
 
 [jnt:bootstrapCommentsList] > jnt:content, jmix:bindedComponent, jmix:list, jmix:socialComponent
 
-[jnt:bootstrapCommentsGallery] > jnt:content, jmix:bindedComponent, jmix:list, jmix:multimediaContent
+[jnt:bootstrapFancyGallery] > jnt:content, jmix:bindedComponent, jmix:list, jmix:multimediaContent
  - folder (weakreference, picker[type='folder']) mandatory internationalized < 'jnt:folder'
  - fluid (boolean) indexed=no
 
