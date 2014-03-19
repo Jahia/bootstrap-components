@@ -78,6 +78,8 @@
 
 [jnt:bootstrapMenuLanguageSwitcher] > jnt:languageSwitcher, jmix:bootstrapNavBarItem
 
+[jnt:bootstrapMenuBookmarkButton] > jnt:bookmarkButton, jmix:bootstrapNavBarItem
+
 [jnt:bootstrapCommentsList] > jnt:content, jmix:bindedComponent, jmix:list, jmix:socialComponent
 
 [jnt:bootstrapCommentsGallery] > jnt:content, jmix:bindedComponent, jmix:list, jmix:multimediaContent

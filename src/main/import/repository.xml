@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content xmlns:j="http://www.jahia.org/jahia/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0">
     <modules jcr:primaryType="jnt:modules">
-        <bootstrap-components j:dependencies="bootstrap default search tabularList"
+        <bootstrap-components j:dependencies="bookmarks bootstrap default search tabularList"
                             j:modulePriority="0"
                               j:moduleType="module"
                               j:title="Jahia Boostrap Components"
                               jcr:mixinTypes="jmix:hasExternalProviderExtension"
                               jcr:primaryType="jnt:module">
                 
+                <portlets jcr:primaryType="jnt:portletFolder"/>
+                <files jcr:primaryType="jnt:folder"/>
+                <contents jcr:primaryType="jnt:contentFolder"/>
             <templates j:rootTemplatePath="/base" jcr:primaryType="jnt:templatesFolder">
                     <files jcr:primaryType="jnt:folder"/>
                     <contents jcr:primaryType="jnt:contentFolder"/>
@@ -25,17 +28,13 @@
                         layout="12"
                         rowType="predefined">
                                 <full jcr:primaryType="jnt:contentList">
-                            <main-resource-display j:mainResourceView="detail"
-                                         jcr:primaryType="jnt:mainResourceDisplay"/>
+                                    <main-resource-display j:mainResourceView="detail" jcr:primaryType="jnt:mainResourceDisplay"/>
                                 </full>
                             </full>
                     </pagecontent>
                 </detail>
             </templates>
 
-                <portlets jcr:primaryType="jnt:portletFolder"/>
-                <files jcr:primaryType="jnt:folder"/>
-                <contents jcr:primaryType="jnt:contentFolder"/>
         </bootstrap-components>
     </modules>
 </content>
