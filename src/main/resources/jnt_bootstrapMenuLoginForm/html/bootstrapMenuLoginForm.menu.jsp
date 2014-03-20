@@ -22,69 +22,67 @@
     <c:if test="${! renderContext.loggedIn}">
         <c:set var="siteNode" value="${currentNode.resolveSite}"/>
 
-        <c:if test="${! jcr:isNodeType(siteNode, 'genericmix:hideLoginButton')}">
-            <div class="login"><a class="btn btn-primary" href="#loginForm" role="button" data-toggle="modal"><i class="icon-user icon-white"></i>&nbsp;<fmt:message
-                    key="bootstrapComponents.login.title"/></a>
+        <div class="login"><a class="btn btn-primary" href="#loginForm" role="button" data-toggle="modal"><i class="icon-user icon-white"></i>&nbsp;<fmt:message
+                key="bootstrapComponents.login.title"/></a>
+        </div>
+
+        <div id="loginForm" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                <h3 id="myModalLabel"><fmt:message key="bootstrapComponents.login.title"/></h3>
             </div>
+            <div class="modal-body">
+                <ui:loginArea>
+                    <c:if test="${not empty param['loginError']}">
+                        <div class="alert alert-error"><fmt:message
+                                key="${param['loginError'] == 'account_locked' ? 'message.accountLocked' : 'message.invalidUsernamePassword'}"/></div>
+                    </c:if>
 
-            <div id="loginForm" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                 aria-hidden="true">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-                    <h3 id="myModalLabel"><fmt:message key="bootstrapComponents.login.title"/></h3>
-                </div>
-                <div class="modal-body">
-                    <ui:loginArea>
-                        <c:if test="${not empty param['loginError']}">
-                            <div class="alert alert-error"><fmt:message
-                                    key="${param['loginError'] == 'account_locked' ? 'genericnt_login.accountLocked' : 'genericnt_login.invalidLogin'}"/></div>
-                        </c:if>
+                    <p>
+                        <label for="username" class="control-label"><fmt:message
+                                key="bootstrapComponents.login.username"/></label>
 
-                        <p>
-                            <label for="username" class="control-label"><fmt:message
-                                    key="bootstrapComponents.login.username"/></label>
+                        <input type="text" value="" id="username" name="username"
+                               class="input-icon input-icon-first-name"
+                               placeholder="<fmt:message key="bootstrapComponents.login.username"/>">
+                    </p>
 
-                            <input type="text" value="" id="username" name="username"
-                                   class="input-icon input-icon-first-name"
-                                   placeholder="<fmt:message key="bootstrapComponents.login.username"/>">
-                        </p>
+                    <p>
+                        <label for="password" class="control-label"><fmt:message
+                                key="bootstrapComponents.login.password"/></label>
+                        <input type="password" name="password" id="password"
+                               class="input-icon input-icon-password"
+                               placeholder="<fmt:message key="bootstrapComponents.login.password"/>">
+                    </p>
 
-                        <p>
-                            <label for="password" class="control-label"><fmt:message
-                                    key="bootstrapComponents.login.password"/></label>
-                            <input type="password" name="password" id="password"
-                                   class="input-icon input-icon-password"
-                                   placeholder="<fmt:message key="bootstrapComponents.login.password"/>">
-                        </p>
+                    <p>
+                        <label for="useCookie" class="checkbox">
+                            <input type="checkbox" id="useCookie" name="useCookie"/>
+                            <fmt:message key="bootstrapComponents.login.rememberMe"/>
+                        </label>
+                    </p>
 
-                        <p>
-                            <label for="useCookie" class="checkbox">
-                                <input type="checkbox" id="useCookie" name="useCookie"/>
-                                <fmt:message key="bootstrapComponents.login.rememberMe"/>
-                            </label>
-                        </p>
+                    <p class="text-right">
+                        <button class="btn btn-primary"><i class="icon-ok icon-white"></i> <fmt:message
+                                key='bootstrapComponents.login.title'/>
+                        </button>
+                    </p>
 
-                        <p class="text-right">
-                            <button class="btn btn-primary"><i class="icon-ok icon-white"></i> <fmt:message
-                                    key='bootstrapComponents.login.title'/>
-                            </button>
-                        </p>
-
-                    </ui:loginArea>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true"><i class="icon-remove icon-white"></i> Close</button>
-                </div>
+                </ui:loginArea>
             </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true"><i class="icon-remove icon-white"></i> Close</button>
+            </div>
+        </div>
 
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    <c:set var="modalOption" value="${empty param['loginError'] ? 'hide' : 'show'}"/>
-                    $('#loginForm').modal('${modalOption}');
-                    $('#loginForm').appendTo("body");
-                })
-            </script>
-        </c:if>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                <c:set var="modalOption" value="${empty param['loginError'] ? 'hide' : 'show'}"/>
+                $('#loginForm').modal('${modalOption}');
+                $('#loginForm').appendTo("body");
+            })
+        </script>
     </c:if>
 </c:if>
 <c:if test="${renderContext.loggedIn}">
