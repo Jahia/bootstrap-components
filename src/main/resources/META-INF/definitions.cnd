@@ -82,16 +82,9 @@
 
 [jnt:bootstrapCommentsList] > jnt:content, jmix:bindedComponent, jmix:list, jmix:socialComponent
 
-[jnt:bootstrapFancyGallery] > jnt:content, jmix:bindedComponent, jmix:list, jmix:multimediaContent
- - folder (weakreference, picker[type='folder']) mandatory internationalized < 'jnt:folder'
- - fluid (boolean) indexed=no
-
 [jmix:bootstrapColumns] > jmix:templateMixin mixin
  extends = jmix:list, jnt:area
  itemtype = layout
  - j:columns (long) = '2' mandatory autocreated
  - bootstrapColumnSize (long) = '12' mandatory autocreated
-
-[jmix:newMixin] mixin
- - test (string)
 
