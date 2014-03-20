@@ -82,7 +82,7 @@
   <artifactId>bootstrap-components</artifactId>
   <version>2.0.0-SNAPSHOT</version>
   <packaging>bundle</packaging>
-  <name>Jahia Boostrap Components</name>
+  <name>Jahia Bootstrap Components</name>
   <description>Module defining basic components using Jahia Bootstrap.</description>
   <scm>
     <connection>scm:git:git://github.com/Jahia/bootstrap-components.git</connection>

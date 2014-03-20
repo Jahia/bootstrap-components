@@ -4,7 +4,7 @@
         <bootstrap-components j:dependencies="bookmarks bootstrap default search tabularList"
                             j:modulePriority="0"
                               j:moduleType="module"
-                              j:title="Jahia Boostrap Components"
+                              j:title="Jahia Bootstrap Components"
                               jcr:mixinTypes="jmix:hasExternalProviderExtension"
                               jcr:primaryType="jnt:module">
                 
