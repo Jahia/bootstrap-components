@@ -80,8 +80,6 @@
 
 [jnt:bootstrapMenuBookmarkButton] > jnt:bookmarkButton, jmix:bootstrapNavBarItem
 
-[jnt:bootstrapCommentsList] > jnt:content, jmix:bindedComponent, jmix:list, jmix:socialComponent
-
 [jmix:bootstrapColumns] > jmix:templateMixin mixin
  extends = jmix:list, jnt:area
  itemtype = layout
