@@ -95,8 +95,8 @@
 
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <c:if test="${not empty picture}">
-                <img class='user-photo' src="<c:url value="${picture.node.thumbnailUrls['avatar_120']}" context="/" />" alt="${fn:escapeXml(firstname)} ${fn:escapeXml(lastname)}" width="60"
-                     height="32"/>
+                <template:addCacheDependency flushOnPathMatchingRegexp="${userNode.path}/files/profile/.*"/>
+                <img class='user-photo' src="${picture.node.thumbnailUrls['avatar_120']}" alt="${fn:escapeXml(firstname)} ${fn:escapeXml(lastname)}" width="60" height="32"/>
             </c:if>
             <c:if test="${empty picture}">
                 <img class='user-photo' src="<c:url value="${url.currentModule}/images/user.png"/>" alt="${fn:escapeXml(firstname)} ${fn:escapeXml(lastname)}" width="60"
