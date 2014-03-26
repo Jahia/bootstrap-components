@@ -78,8 +78,6 @@
 
 [jnt:bootstrapMenuLanguageSwitcher] > jnt:languageSwitcher, jmix:bootstrapNavBarItem
 
-[jnt:bootstrapMenuBookmarkButton] > jnt:bookmarkButton, jmix:bootstrapNavBarItem
-
 [jmix:bootstrapColumns] > jmix:templateMixin mixin
  extends = jmix:list, jnt:area
  itemtype = layout

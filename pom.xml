@@ -125,7 +125,7 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
-            <Jahia-Depends>default,bootstrap,bookmarks,search,tabularList</Jahia-Depends>
+            <Jahia-Depends>default,bootstrap,search,tabularList</Jahia-Depends>
           </instructions>
         </configuration>
       </plugin>
