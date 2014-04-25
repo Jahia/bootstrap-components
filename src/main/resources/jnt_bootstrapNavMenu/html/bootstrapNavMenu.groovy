@@ -61,6 +61,7 @@ printMenu = { node, navMenuLevel, omitFormatting ->
 //                System.out.println("Menu for node "+(entries++)+" "+menuItem.path);
                 if (startLevelValue < navMenuLevel) {
                     Resource resource = new Resource(menuItem, "html", (hasChildren && navMenuLevel == 1 ? "menuDropdown" : "menuElement"), currentResource.getContextConfiguration());
+                    currentResource.getDependencies().add(menuItem.getCanonicalPath())
                     def render = RenderService.getInstance().render(resource, renderContext)
                     if (render != "") {
                         if (firstEntry) {
