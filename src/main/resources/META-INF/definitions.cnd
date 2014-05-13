@@ -29,7 +29,7 @@
  itemtype = content
  - sectionElement (string, choicelist[resourceBundle]) = 'section' autocreated < 'section', 'article', 'header', 'footer', 'aside', 'nav', 'div'
  - sectionCssClass (string)
- - containerType (string, choicelist[resourceBundle]) = 'fluid' autocreated < 'fixed', 'fluid'
+ - containerType (string, choicelist[resourceBundle]) = 'fluid' autocreated < 'fixed', 'fluid', 'rowfluid'
  - containerCssClass (string)
 
 [jnt:bootstrapFullComponentRow] > jnt:content, jmix:studioLayout

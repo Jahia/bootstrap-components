@@ -42,7 +42,7 @@
     <c:set var="rowType" value="${currentNode.properties['rowType'].string}"/>
     <c:set var="rowName" value="${currentNode.name}"/>
     <c:set var="rowClass" value="row"/>
-    <c:if test="${empty containerType || containerType == 'fluid'}">
+    <c:if test="${empty containerType || containerType == 'fluid' || containerType == 'rowfluid'}">
         <c:set var="rowClass" value="row-fluid"/>
     </c:if>
     <div class="${rowClass}">
