@@ -1,5 +1,4 @@
 import org.apache.commons.lang.StringUtils
-import org.apache.taglibs.standard.functions.Functions
 import org.jahia.services.content.JCRContentUtils
 import org.jahia.services.render.RenderService
 import org.jahia.services.render.Resource
@@ -51,9 +50,7 @@ printMenu = { node, navMenuLevel, omitFormatting ->
             if (menuItem.properties['j:displayInMenu']) {
                 correctType = false
                 menuItem.properties['j:displayInMenu'].each() {
-                    if (it.node != null) {
-                        correctType |= (it.node.identifier == currentNode.identifier)
-                    }
+                    correctType |= (it.string == currentNode.name)
                 }
             }
             if ((startLevelValue < navMenuLevel || inpath) && correctType) {
