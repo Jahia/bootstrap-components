@@ -40,7 +40,7 @@ printMenu = { node, navMenuLevel, omitFormatting ->
             itemPath = menuItem.path
             def pathMainResource = renderContext.mainResource.node.path
             inpath = pathMainResource == itemPath || StringUtils.substringBeforeLast(pathMainResource,"/").startsWith(itemPath)
-            selected = menuItem.isNodeType("jmix:nodeReference") ?
+            selected = menuItem.isNodeType("jmix:nodeReference") && menuItem.properties['j:node'] != null ?
                        pathMainResource == menuItem.properties['j:node'].node.path :
                        pathMainResource == itemPath
             correctType = true
