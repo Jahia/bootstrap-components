@@ -55,7 +55,7 @@
             <c:choose>
                 <c:when test="${not empty moduleMap.displaySearchParams}">
                     <c:set var="searchUrl"><search:searchUrl/>&</c:set>
-                    <c:url value="${searchUrl}" var="basePaginationUrl">
+                    <c:url value="${searchUrl}" var="basePaginationUrl" context="/">
                         <c:if test="${not empty param}">
                             <c:forEach items="${param}" var="extraParam">
                                 <c:if test="${extraParam.key ne beginid and extraParam.key ne endid and extraParam.key ne pagesizeid and !fn:startsWith(extraParam.key, 'src_')}">
