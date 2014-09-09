@@ -35,7 +35,9 @@
         </c:otherwise>
     </c:choose>
     <c:set target="${moduleMap}" property="pageSize" value="${pageSize}"/>
-    <c:set target="${moduleMap}" property="pageStart" value="${fn:escapeXml(param[beginid])}"/>
+    <c:if test="${not empty param[beginid]}">
+        <c:set target="${moduleMap}" property="pageStart" value="${fn:escapeXml(param[beginid])}"/>
+    </c:if>
     <template:option node="${boundComponent}" nodetype="${boundComponent.primaryNodeTypeName},jmix:list"
                      view="hidden.header"/>
     <c:set var="sizeNotExact"
@@ -59,7 +61,9 @@
                         <c:if test="${not empty param}">
                             <c:forEach items="${param}" var="extraParam">
                                 <c:if test="${extraParam.key ne beginid and extraParam.key ne endid and extraParam.key ne pagesizeid and !fn:startsWith(extraParam.key, 'src_')}">
-                                    <c:param name="${extraParam.key}" value="${fn:escapeXml(extraParam.value)}"/>
+                                    <c:if test="${not empty extraParam.value}">
+                                        <c:param name="${extraParam.key}" value="${fn:escapeXml(extraParam.value)}"/>
+                                    </c:if>
                                 </c:if>
                             </c:forEach>
                         </c:if>
@@ -72,7 +76,9 @@
                         <c:if test="${not empty param}">
                             <c:forEach items="${param}" var="extraParam">
                                 <c:if test="${extraParam.key ne beginid and extraParam.key ne endid and extraParam.key ne pagesizeid}">
-                                    <c:param name="${extraParam.key}" value="${fn:escapeXml(extraParam.value)}"/>
+                                    <c:if test="${not empty extraParam.value}">
+                                        <c:param name="${extraParam.key}" value="${fn:escapeXml(extraParam.value)}"/>
+                                    </c:if>
                                 </c:if>
                             </c:forEach>
                         </c:if>
