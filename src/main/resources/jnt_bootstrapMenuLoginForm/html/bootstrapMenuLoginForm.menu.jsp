@@ -53,7 +53,7 @@
                                 key="bootstrapComponents.login.password"/></label>
                         <input type="password" name="password" id="password"
                                class="input-icon input-icon-password"
-                               placeholder="<fmt:message key="bootstrapComponents.login.password"/>">
+                               placeholder="<fmt:message key="bootstrapComponents.login.password"/>" autocomplete="off">
                     </p>
 
                     <p>

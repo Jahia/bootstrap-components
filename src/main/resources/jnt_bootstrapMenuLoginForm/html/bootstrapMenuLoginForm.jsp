@@ -47,7 +47,7 @@
         <input class="span2" type="text" value="" tabindex="1" maxlength="250" name="username" id="username"
                placeholder="<fmt:message key="label.username"/>"/>
         <input class="span2" type="password" tabindex="2" maxlength="250" name="password" id="password"
-               placeholder="<fmt:message key="label.password"/>"/>
+               placeholder="<fmt:message key="label.password"/>" autocomplete="off"/>
 
         <button type="submit" class="btn btn-small"><fmt:message
                 key='loginForm.loginbutton.label'/></button>
