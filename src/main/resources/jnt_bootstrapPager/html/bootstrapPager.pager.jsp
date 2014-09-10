@@ -35,9 +35,7 @@
         </c:otherwise>
     </c:choose>
     <c:set target="${moduleMap}" property="pageSize" value="${pageSize}"/>
-    <c:if test="${not empty param[beginid]}">
-        <c:set target="${moduleMap}" property="pageStart" value="${fn:escapeXml(param[beginid])}"/>
-    </c:if>
+    <c:set target="${moduleMap}" property="pageStart" value="${not empty param[beginid] ? fn:escapeXml(param[beginid]) : param[beginid]}"/>
     <template:option node="${boundComponent}" nodetype="${boundComponent.primaryNodeTypeName},jmix:list"
                      view="hidden.header"/>
     <c:set var="sizeNotExact"
@@ -61,9 +59,7 @@
                         <c:if test="${not empty param}">
                             <c:forEach items="${param}" var="extraParam">
                                 <c:if test="${extraParam.key ne beginid and extraParam.key ne endid and extraParam.key ne pagesizeid and !fn:startsWith(extraParam.key, 'src_')}">
-                                    <c:if test="${not empty extraParam.value}">
-                                        <c:param name="${extraParam.key}" value="${fn:escapeXml(extraParam.value)}"/>
-                                    </c:if>
+                                    <c:param name="${extraParam.key}" value="${fnot empty extraParam.value ? fn:escapeXml(extraParam.value) : extraParam.value}"/>
                                 </c:if>
                             </c:forEach>
                         </c:if>
@@ -76,9 +72,7 @@
                         <c:if test="${not empty param}">
                             <c:forEach items="${param}" var="extraParam">
                                 <c:if test="${extraParam.key ne beginid and extraParam.key ne endid and extraParam.key ne pagesizeid}">
-                                    <c:if test="${not empty extraParam.value}">
-                                        <c:param name="${extraParam.key}" value="${fn:escapeXml(extraParam.value)}"/>
-                                    </c:if>
+                                    <c:param name="${extraParam.key}" value="${not empty extraParam.value ? fn:escapeXml(extraParam.value) : extraParam.value}"/>
                                 </c:if>
                             </c:forEach>
                         </c:if>
