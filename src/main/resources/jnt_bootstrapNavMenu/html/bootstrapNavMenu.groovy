@@ -5,6 +5,7 @@ import org.jahia.services.render.Resource
 import org.jahia.taglibs.jcr.node.JCRTagUtils
 
 import javax.jcr.ItemNotFoundException
+import javax.jcr.PathNotFoundException
 
 baseline = currentNode.properties['j:baselineNode']
 maxDepth = currentNode.properties['j:maxDepth']
@@ -40,9 +41,13 @@ printMenu = { node, navMenuLevel, omitFormatting ->
             itemPath = menuItem.path
             def pathMainResource = renderContext.mainResource.node.path
             inpath = pathMainResource == itemPath || StringUtils.substringBeforeLast(pathMainResource,"/").startsWith(itemPath)
-            selected = menuItem.isNodeType("jmix:nodeReference") && menuItem.properties['j:node'] != null ?
-                       pathMainResource == menuItem.properties['j:node'].node.path :
-                       pathMainResource == itemPath
+            try {
+                selected = menuItem.isNodeType("jmix:nodeReference") && menuItem.properties['j:node'] != null ?
+                           pathMainResource == menuItem.properties['j:node'].node.path :
+                           pathMainResource == itemPath
+            } catch (Exception e) {
+                selected = false;
+            }
             correctType = true
             if(menuItem.isNodeType("jmix:navMenu")){
                 correctType = false
