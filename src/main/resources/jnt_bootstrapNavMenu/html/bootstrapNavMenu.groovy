@@ -41,12 +41,18 @@ printMenu = { node, navMenuLevel, omitFormatting ->
             itemPath = menuItem.path
             def pathMainResource = renderContext.mainResource.node.path
             inpath = pathMainResource == itemPath || StringUtils.substringBeforeLast(pathMainResource,"/").startsWith(itemPath)
-            try {
-                selected = menuItem.isNodeType("jmix:nodeReference") && menuItem.properties['j:node'] != null ?
-                           pathMainResource == menuItem.properties['j:node'].node.path :
-                           pathMainResource == itemPath
-            } catch (Exception e) {
-                selected = false;
+            if (menuItem.isNodeType("jmix:nodeReference")) {
+                try {
+                    if (menuItem.properties['j:node'].node != null) {
+                        selected = renderContext.mainResource.node.path == menuItem.properties['j:node'].node.path;
+                    } else {
+                        selected = false;
+                    }
+                } catch (ItemNotFoundException e) {
+                    selected = false;
+                }
+            } else {
+                selected = renderContext.mainResource.node.path == itemPath
             }
             correctType = true
             if(menuItem.isNodeType("jmix:navMenu")){
