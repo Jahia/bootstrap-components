@@ -41,15 +41,18 @@ printMenu = { node, navMenuLevel, omitFormatting ->
             itemPath = menuItem.path
             def pathMainResource = renderContext.mainResource.node.path
             inpath = pathMainResource == itemPath || StringUtils.substringBeforeLast(pathMainResource,"/").startsWith(itemPath)
+            def referenceIsBroken = false;
             if (menuItem.isNodeType("jmix:nodeReference")) {
                 try {
                     if (menuItem.properties['j:node'].node != null) {
                         selected = renderContext.mainResource.node.path == menuItem.properties['j:node'].node.path;
                     } else {
                         selected = false;
+                        referenceIsBroken = true;
                     }
                 } catch (ItemNotFoundException e) {
                     selected = false;
+                    referenceIsBroken = true;
                 }
             } else {
                 selected = renderContext.mainResource.node.path == itemPath
@@ -64,7 +67,7 @@ printMenu = { node, navMenuLevel, omitFormatting ->
                     correctType |= (it.string == currentNode.name)
                 }
             }
-            if ((startLevelValue < navMenuLevel || inpath) && correctType) {
+            if (!referenceIsBroken && correctType && (startLevelValue < navMenuLevel || inpath)) {
                 hasChildren = navMenuLevel < maxDepth.long && JCRTagUtils.hasChildrenOfType(menuItem, "jnt:page,jnt:nodeLink,jnt:externalLink")
 //                System.out.println("Menu for node "+(entries++)+" "+menuItem.path);
                 if (startLevelValue < navMenuLevel) {
