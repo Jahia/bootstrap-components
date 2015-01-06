@@ -16,7 +16,7 @@
     </c:if>
     <s:form method="post" class="navbar-search${pullClass}" action="${searchUrl}">
         <fmt:message key='search.startSearching' var="startSearching"/>
-        <s:term match="all_words" id="searchTerm" value="${startSearching}" searchIn="siteContent,tags"
+        <s:term match="all_words" id="searchTerm" value="${startSearching}" searchIn="siteContent,tags,files"
                 onfocus="if(this.value=='${startSearching}')this.value='';"
                 onblur="if(this.value=='')this.value='${startSearching}';" class="search-query"/>
         <s:site value="${renderContext.site.name}" includeReferencesFrom="systemsite" display="false"/>
