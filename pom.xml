@@ -86,9 +86,9 @@
   <name>Jahia Bootstrap Components</name>
   <description>Module defining basic components using Jahia Bootstrap.</description>
   <scm>
-    <connection>scm:git:git://github.com/Jahia/bootstrap-components.git</connection>
+    <connection>scm:git:git@github.com:Jahia/bootstrap-components.git</connection>
     <developerConnection>scm:git:git@github.com:Jahia/bootstrap-components.git</developerConnection>
-    <url>https://github.com/Jahia/bootstrap-components</url>
+    <url>scm:git:git@github.com:Jahia/bootstrap-components</url>
   </scm>
   <dependencies>
     <dependency>
