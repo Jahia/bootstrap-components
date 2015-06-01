@@ -72,17 +72,16 @@
         For more information, please visit http://www.jahia.com
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.jahia.modules</groupId>
         <artifactId>jahia-modules</artifactId>
-        <version>7.1.0.0-SNAPSHOT</version>
-        <relativePath/>
+        <version>7.1.0.0-RC</version>
+        <relativePath />
     </parent>
     <artifactId>bootstrap-components</artifactId>
-    <version>3.0.0-SNAPSHOT</version>
+    <version>3.0.0-RC</version>
     <packaging>bundle</packaging>
     <name>Jahia Bootstrap Components</name>
     <description>Module defining basic components using Jahia Bootstrap.</description>
@@ -90,7 +89,8 @@
         <connection>scm:git:git@github.com:Jahia/bootstrap-components.git</connection>
         <developerConnection>scm:git:git@github.com:Jahia/bootstrap-components.git</developerConnection>
         <url>scm:git:git@github.com:Jahia/bootstrap-components</url>
-    </scm>
+      <tag>3_0_0_RC</tag>
+  </scm>
 
     <properties>
         <jahia-depends>default,bootstrap,search,tabularList</jahia-depends>
