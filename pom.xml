@@ -81,7 +81,7 @@
         <relativePath />
     </parent>
     <artifactId>bootstrap-components</artifactId>
-    <version>3.0.1-SNAPSHOT</version>
+    <version>3.0.1</version>
     <packaging>bundle</packaging>
     <name>Jahia Bootstrap Components</name>
     <description>Module defining basic components using Jahia Bootstrap.</description>
@@ -89,7 +89,7 @@
         <connection>scm:git:git@github.com:Jahia/bootstrap-components.git</connection>
         <developerConnection>scm:git:git@github.com:Jahia/bootstrap-components.git</developerConnection>
         <url>scm:git:git@github.com:Jahia/bootstrap-components</url>
-      <tag>HEAD</tag>
+      <tag>3_0_1</tag>
   </scm>
 
     <properties>
