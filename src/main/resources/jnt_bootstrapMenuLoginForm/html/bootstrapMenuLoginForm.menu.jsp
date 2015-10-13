@@ -106,12 +106,25 @@
         </a>
         <ul class="dropdown-menu">
             <c:if test="${!renderContext.settings.distantPublicationServerMode
-and renderContext.mainResource.node.properties['j:originWS'].string ne 'live'
 and not jcr:isNodeType(renderContext.mainResource.node.resolveSite, 'jmix:remotelyPublished')
 }">
+                <c:choose>
+                    <c:when test="${renderContext.mainResource.node.properties['j:originWS'].string ne 'live'}">
+                        <c:set var="liveUrl" value="${url.live}"/>
+                        <c:set var="editUrl" value="${url.edit}"/>
+                        <c:set var="previewUrl" value="${url.preview}"/>
+                        <c:set var="contributeUrl" value="${url.preview}"/>
+                    </c:when>
+                    <c:when test="${renderContext.mainResource.node.properties['j:originWS'].string eq 'live'}">
+                        <c:set var="liveUrl" value="${url.live}.html"/>
+                        <c:set var="editUrl" value="${url.baseEdit}${renderContext.site.home.path}.html"/>
+                        <c:set var="previewUrl" value="${url.basePreview}${renderContext.site.home.path}.html"/>
+                        <c:set var="contributeUrl" value="${url.baseContribute}${renderContext.site.home.path}.html"/>
+                    </c:when>
+                </c:choose>
                 <c:if test="${! renderContext.liveMode}">
                     <li>
-                        <a href="<c:url value='${url.live}'/>">
+                        <a href="<c:url value='${liveUrl}'/>">
                             <i class="icon-globe"></i>
                             <fmt:message key="bootstrapComponents.login.gotoLive"/>
                         </a>
@@ -119,7 +132,7 @@ and not jcr:isNodeType(renderContext.mainResource.node.resolveSite, 'jmix:remote
                 </c:if>
                 <c:if test="${! renderContext.previewMode && jcr:hasPermission(renderContext.mainResource.node, 'editModeAccess')}">
                     <li>
-                        <a href="<c:url value='${url.preview}'/>">
+                        <a href="<c:url value='${previewUrl}'/>">
                             <i class="icon-eye-open"></i>
                             <fmt:message key="bootstrapComponents.login.gotoPreview"/>
                         </a>
@@ -127,7 +140,7 @@ and not jcr:isNodeType(renderContext.mainResource.node.resolveSite, 'jmix:remote
                 </c:if>
                 <c:if test="${! renderContext.editMode && jcr:hasPermission(renderContext.mainResource.node, 'editModeAccess')}">
                     <li>
-                        <a href="<c:url value='${url.edit}'/>">
+                        <a href="<c:url value='${editUrl}'/>">
                             <i class="icon-edit"></i>
                             <fmt:message key="bootstrapComponents.login.gotoEdit"/>
                         </a>
@@ -135,7 +148,7 @@ and not jcr:isNodeType(renderContext.mainResource.node.resolveSite, 'jmix:remote
                 </c:if>
                 <c:if test="${! renderContext.editMode && !jcr:hasPermission(renderContext.mainResource.node, 'editModeAccess') && jcr:hasPermission(renderContext.mainResource.node, 'contributeModeAccess')}">
                     <li>
-                        <a href="<c:url value='${url.contribute}'/>">
+                        <a href="<c:url value='${contributeUrl}'/>">
                             <i class="icon-edit"></i>
                             <fmt:message key="bootstrapComponents.login.gotoContribute"/>
                         </a>
