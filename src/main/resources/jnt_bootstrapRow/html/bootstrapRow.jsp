@@ -9,9 +9,9 @@
     <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jnt:bootstrapColumn')}" var="child" varStatus="status">
         <c:set var="offsetClass" value=""/>
         <c:if test="${child.properties.offset.long gt 0}">
-            <c:set var="offsetClass" value=" offset${child.properties.offset.long}"/>
+            <c:set var="offsetClass" value=" col-md-offset-${child.properties.offset.long}"/>
         </c:if>
-        <div class="span${child.properties.span.long}${offsetClass}">
+        <div class="col-md-${child.properties.span.long}${offsetClass}">
             <template:module node="${child}"/>
         </div>
     </c:forEach>

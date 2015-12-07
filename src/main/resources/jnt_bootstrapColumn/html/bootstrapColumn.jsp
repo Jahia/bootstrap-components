@@ -19,9 +19,9 @@
 <c:if test="${editableModule}">
     <template:addResources type="javascript" resources="jquery.min.js,bootstrapConfig.js"/>
     <c:url var="currentNodeUrl" value="${url.base}${functions:escapePath(currentNode.path)}"/>
-    <button class="btn btn-mini${span.long eq 1 ? ' disabled' : '' }" type="button"<c:if test="${span.long gt 1}"> onclick="updateCell('${currentNodeUrl}', ${span.long - 1}, null)"</c:if>><i class="icon-minus"></i></button>
-    <button class="btn btn-mini" type="button" onclick="updateCell('${currentNodeUrl}', ${span.long + 1}, null)"><i class="icon-plus"></i></button>
-    <button class="btn btn-mini${offset.long eq 0 ? ' disabled' : '' }" type="button"<c:if test="${offset.long gt 0}"> onclick="updateCell('${currentNodeUrl}', null, ${offset.long - 1})"</c:if>><i class="icon-indent-right"></i></button>
-    <button class="btn btn-mini" type="button" onclick="updateCell('${currentNodeUrl}', null, ${offset.long + 1})"><i class="icon-indent-left"></i></button>
+    <button class="btn btn-xs${span.long eq 1 ? ' disabled' : '' }" type="button"<c:if test="${span.long gt 1}"> onclick="updateCell('${currentNodeUrl}', ${span.long - 1}, null)"</c:if>><i class="glyphicon-minus"></i></button>
+    <button class="btn btn-xs" type="button" onclick="updateCell('${currentNodeUrl}', ${span.long + 1}, null)"><i class="glyphicon-plus"></i></button>
+    <button class="btn btn-xs${offset.long eq 0 ? ' disabled' : '' }" type="button"<c:if test="${offset.long gt 0}"> onclick="updateCell('${currentNodeUrl}', null, ${offset.long - 1})"</c:if>><i class="glyphicon-indent-right"></i></button>
+    <button class="btn btn-xs" type="button" onclick="updateCell('${currentNodeUrl}', null, ${offset.long + 1})"><i class="glyphicon-indent-left"></i></button>
 </c:if>
 <template:area path="${currentNode.name}" areaAsSubNode="true"/>

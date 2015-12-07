@@ -19,7 +19,7 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
 <bootstrap:addCSS/>
-<template:addResources type="javascript" resources="bootstrap-tab.js,bootstrap-transition.js"/>
+<template:addResources type="javascript" resources="tab.js,transition.js"/>
 <c:set var="tabsPosition"
        value="${currentNode.properties['tabsPosition'].string ne 'top' ? currentNode.properties['tabsPosition'].string : ''}"/>
 <c:set var="fadeIn" value="${currentNode.properties['fadeIn'].boolean}"/>

@@ -40,16 +40,16 @@
            varStatus="status">
     <c:choose>
         <c:when test="${(status.index mod columns) eq 0 and not empty offset}">
-            <c:set var="offsetClass" value="offset${offset} " />
+            <c:set var="offsetClass" value="col-md-offset-${offset} " />
         </c:when>
         <c:otherwise>
             <c:set var="offsetClass" value="" />
         </c:otherwise>
     </c:choose>
     <c:if test="${(status.index mod columns) eq 0 }">
-        <div class="row-fluid">
+        <div class="row">
     </c:if>
-    <div class="${offsetClass}span${columnSize}">
+    <div class="${offsetClass}col-md-${columnSize}">
             <template:module node="${subchild}" view="${moduleMap.subNodesView}" editable="${moduleMap.editable}"/>
     </div>
     <c:if test="${(status.index mod columns) eq (columns-1) or status.last}">
@@ -58,8 +58,8 @@
 </c:forEach>
 
 <c:if test="${moduleMap.editable and renderContext.editMode}">
-    <div class="row-fluid">
-        <div class="span${bootstrapColumnSize}">
+    <div class="row">
+        <div class="col-md-${bootstrapColumnSize}">
             <template:module path="*"/>
         </div>
     </div>

@@ -43,7 +43,7 @@
     <c:set var="rowName" value="${currentNode.name}"/>
     <c:set var="rowClass" value="row"/>
     <c:if test="${empty containerType || containerType == 'fluid' || containerType == 'rowfluid'}">
-        <c:set var="rowClass" value="row-fluid"/>
+        <c:set var="rowClass" value="row"/>
     </c:if>
     <div class="${rowClass}">
         <c:choose>
@@ -51,58 +51,58 @@
                 <c:set var="layout" value="${currentNode.properties['layout'].string}"/>
                 <c:choose>
                     <c:when test="${layout == '4_8'}">
-                        <div class="span4"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
-                        <div class="span8"><template:area path="${rowName}" areaAsSubNode="true"/></div>
+                        <div class="col-md-4"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
+                        <div class="col-md-8"><template:area path="${rowName}" areaAsSubNode="true"/></div>
                     </c:when>
                     <c:when test="${layout == '8_4'}">
-                        <div class="span8"><template:area path="${rowName}" areaAsSubNode="true"/></div>
-                        <div class="span4"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
+                        <div class="col-md-8"><template:area path="${rowName}" areaAsSubNode="true"/></div>
+                        <div class="col-md-4"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
                     </c:when>
                     <c:when test="${layout == '3_9'}">
-                        <div class="span3"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
-                        <div class="span9"><template:area path="${rowName}" areaAsSubNode="true"/></div>
+                        <div class="col-md-3"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
+                        <div class="col-md-9"><template:area path="${rowName}" areaAsSubNode="true"/></div>
                     </c:when>
                     <c:when test="${layout == '9_3'}">
-                        <div class="span9"><template:area path="${rowName}" areaAsSubNode="true"/></div>
-                        <div class="span3"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
+                        <div class="col-md-9"><template:area path="${rowName}" areaAsSubNode="true"/></div>
+                        <div class="col-md-3"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
                     </c:when>
                     <c:when test="${layout == '2_10'}">
-                        <div class="span2"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
-                        <div class="span10"><template:area path="${rowName}" areaAsSubNode="true"/></div>
+                        <div class="col-md-2"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
+                        <div class="col-md-10"><template:area path="${rowName}" areaAsSubNode="true"/></div>
                     </c:when>
                     <c:when test="${layout == '10_2'}">
-                        <div class="span10"><template:area path="${rowName}" areaAsSubNode="true"/></div>
-                        <div class="span2"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
+                        <div class="col-md-10"><template:area path="${rowName}" areaAsSubNode="true"/></div>
+                        <div class="col-md-2"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
                     </c:when>
                     <c:when test="${layout == '4_4_4'}">
-                        <div class="span4"><template:area path="${rowName}" areaAsSubNode="true"/></div>
-                        <div class="span4"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
-                        <div class="span4"><template:area path="${rowName}-side2" areaAsSubNode="true"/></div>
+                        <div class="col-md-4"><template:area path="${rowName}" areaAsSubNode="true"/></div>
+                        <div class="col-md-4"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
+                        <div class="col-md-4"><template:area path="${rowName}-side2" areaAsSubNode="true"/></div>
                     </c:when>
                     <c:when test="${layout == '3_6_3'}">
-                        <div class="span3"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
-                        <div class="span6"><template:area path="${rowName}" areaAsSubNode="true"/></div>
-                        <div class="span3"><template:area path="${rowName}-side2" areaAsSubNode="true"/></div>
+                        <div class="col-md-3"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
+                        <div class="col-md-6"><template:area path="${rowName}" areaAsSubNode="true"/></div>
+                        <div class="col-md-3"><template:area path="${rowName}-side2" areaAsSubNode="true"/></div>
                     </c:when>
                     <c:when test="${layout == '3_3_3_3'}">
-                        <div class="span3"><template:area path="${rowName}" areaAsSubNode="true"/></div>
-                        <div class="span3"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
-                        <div class="span3"><template:area path="${rowName}-side2" areaAsSubNode="true"/></div>
-                        <div class="span3"><template:area path="${rowName}-side3" areaAsSubNode="true"/></div>
+                        <div class="col-md-3"><template:area path="${rowName}" areaAsSubNode="true"/></div>
+                        <div class="col-md-3"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
+                        <div class="col-md-3"><template:area path="${rowName}-side2" areaAsSubNode="true"/></div>
+                        <div class="col-md-3"><template:area path="${rowName}-side3" areaAsSubNode="true"/></div>
                     </c:when>
                     <c:when test="${layout == '6_6'}">
-                        <div class="span6"><template:area path="${rowName}" areaAsSubNode="true"/></div>
-                        <div class="span6"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
+                        <div class="col-md-6"><template:area path="${rowName}" areaAsSubNode="true"/></div>
+                        <div class="col-md-6"><template:area path="${rowName}-side1" areaAsSubNode="true"/></div>
                     </c:when>
                     <c:when test="${layout == '12'}">
-                        <div class="span12"><template:area path="${rowName}" areaAsSubNode="true"/></div>
+                        <div class="col-md-12"><template:area path="${rowName}" areaAsSubNode="true"/></div>
                     </c:when>
                     <c:when test="${layout == '0'}">
                         <template:area path="${rowName}" areaAsSubNode="true"/>
                     </c:when>
                     <c:otherwise>
                         <c:if test="${renderContext.editMode}">
-                            <div class="span12">
+                            <div class="col-md-12">
                                 <div class="alert">
                                     <button type="button" class="close" data-dismiss="alert">×</button>
                                     <strong><fmt:message key="jnt_bootstrapFullComponentRow.message.warning"/>!</strong> <fmt:message

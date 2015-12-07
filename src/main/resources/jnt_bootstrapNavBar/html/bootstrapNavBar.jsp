@@ -6,13 +6,13 @@
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
 <%@ taglib prefix="bootstrap" uri="http://www.jahia.org/tags/bootstrapLib" %>
 <bootstrap:addCSS/>
-<template:addResources type="javascript" resources="jquery.js,bootstrap-collapse.js"/>
+<template:addResources type="javascript" resources="jquery.js,collapse.js"/>
 <jcr:nodeProperty node="${currentNode}" name="jcr:title" var="title"/>
 <jcr:nodeProperty node="${currentNode}" name="j:styleName" var="styleName"/>
 <jcr:nodeProperty node="${currentNode}" name="option" var="option"/>
 <jcr:nodeProperty node="${currentNode}" name="responsive" var="responsive"/>
 <jcr:nodeProperty node="${currentNode}" name="inverse" var="inverse"/>
-<c:set var="navbarClasses" value="navbar" />
+<c:set var="navbarClasses" value="navbar-nav" />
 <c:if test="${not empty option and not empty option.string}">
     <c:set var="navbarClasses" value="${navbarClasses} ${option.string}" />
 </c:if>
@@ -26,18 +26,18 @@
     <div class="navbar-inner">
     <c:if test="${not empty responsive and responsive.boolean}">
         <div class="container${currentNode.properties.fluid.boolean ? '-fluid' : ''}">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+            <a class="btn navbar-btn" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="glyphicon-bar"></span>
+                <span class="glyphicon-bar"></span>
+                <span class="glyphicon-bar"></span>
+                <span class="glyphicon-bar"></span>
             </a>
     </c:if>
 
-        <a class="brand" href="${renderContext.site.home.url}"><c:if test="${not empty title}">${fn:escapeXml(title.string)}</c:if></a>
+        <a class="navbar-brand" href="${renderContext.site.home.url}"><c:if test="${not empty title}">${fn:escapeXml(title.string)}</c:if></a>
 
         <c:if test="${not empty responsive and responsive.boolean}">
-            <div class="nav-collapse collapse">
+            <div class="navbar-collapse collapse">
         </c:if>
 
             <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jmix:bootstrapNavBarItem')}" var="child" varStatus="status">

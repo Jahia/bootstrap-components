@@ -16,7 +16,7 @@
 <%--@elvariable id="currentAliasUser" type="org.jahia.services.usermanager.JahiaUser"--%>
 
 <bootstrap:addCSS/>
-<template:addResources type="javascript" resources="bootstrap-alert.js"/>
+<template:addResources type="javascript" resources="alert.js"/>
 <jcr:nodeProperty node="${currentNode}" name="position" var="position"/>
 <c:set var="pullClass" value="" />
 <c:if test="${not empty position}">
@@ -30,26 +30,26 @@
     </script>
     <ui:loginArea class="navbar-form${pullClass}">
         <ui:isLoginError var="loginResult">
-            <div class="alert alert-error">
+            <div class="alert alert-danger">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <fmt:message
                         key="${loginResult == 'account_locked' ? 'message.accountLocked' : 'message.invalidUsernamePassword'}"/>
             </div>
         </ui:isLoginError>
         <c:if test="${not empty param['loginError']}">
-            <div class="alert alert-error">
+            <div class="alert alert-danger">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <fmt:message
                         key="${param['loginError'] == 'account_locked' ? 'message.accountLocked' : 'message.invalidUsernamePassword'}"/>
             </div>
         </c:if>
 
-        <input class="span2" type="text" value="" tabindex="1" maxlength="250" name="username" id="username"
+        <input class="col-md-2" type="text" value="" tabindex="1" maxlength="250" name="username" id="username"
                placeholder="<fmt:message key="label.username"/>"/>
-        <input class="span2" type="password" tabindex="2" maxlength="250" name="password" id="password"
+        <input class="col-md-2" type="password" tabindex="2" maxlength="250" name="password" id="password"
                placeholder="<fmt:message key="label.password"/>" autocomplete="off"/>
 
-        <button type="submit" class="btn btn-small"><fmt:message
+        <button type="submit" class="btn btn-sm"><fmt:message
                 key='loginForm.loginbutton.label'/></button>
     </ui:loginArea>
 </c:if>

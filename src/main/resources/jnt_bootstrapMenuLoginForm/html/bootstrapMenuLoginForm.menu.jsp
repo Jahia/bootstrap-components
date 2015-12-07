@@ -16,13 +16,13 @@
 <%--@elvariable id="currentAliasUser" type="org.jahia.services.usermanager.JahiaUser"--%>
 
 <bootstrap:addCSS/>
-<template:addResources type="javascript" resources="jquery.js,bootstrap-alert.js,bootstrap-modal.js,bootstrap-transition.js,bootstrap-collapse.js"/>
+<template:addResources type="javascript" resources="jquery.js,alert.js,modal.js,transition.js,collapse.js"/>
 <template:addResources type="css" resources="bootstrapComponents.css"/>
 <c:if test="${! renderContext.editMode}">
     <c:if test="${! renderContext.loggedIn}">
         <c:set var="siteNode" value="${currentNode.resolveSite}"/>
 
-        <div class="login"><a class="btn btn-primary" href="#loginForm" role="button" data-toggle="modal"><i class="icon-user icon-white"></i>&nbsp;<fmt:message
+        <div class="login"><a class="btn btn-primary" href="#loginForm" role="button" data-toggle="modal"><i class="glyphicon-user glyphicon-white"></i>&nbsp;<fmt:message
                 key="bootstrapComponents.login.title"/></a>
         </div>
 
@@ -35,7 +35,7 @@
             <div class="modal-body">
                 <ui:loginArea>
                     <c:if test="${not empty param['loginError']}">
-                        <div class="alert alert-error"><fmt:message
+                        <div class="alert alert-danger"><fmt:message
                                 key="${param['loginError'] == 'account_locked' ? 'message.accountLocked' : 'message.invalidUsernamePassword'}"/></div>
                     </c:if>
 
@@ -44,7 +44,7 @@
                                 key="bootstrapComponents.login.username"/></label>
 
                         <input type="text" value="" id="username" name="username"
-                               class="input-icon input-icon-first-name"
+                               class="input-icon input-glyphicon-first-name"
                                placeholder="<fmt:message key="bootstrapComponents.login.username"/>">
                     </p>
 
@@ -52,7 +52,7 @@
                         <label for="password" class="control-label"><fmt:message
                                 key="bootstrapComponents.login.password"/></label>
                         <input type="password" name="password" id="password"
-                               class="input-icon input-icon-password"
+                               class="input-icon input-glyphicon-password"
                                placeholder="<fmt:message key="bootstrapComponents.login.password"/>" autocomplete="off">
                     </p>
 
@@ -64,7 +64,7 @@
                     </p>
 
                     <p class="text-right">
-                        <button class="btn btn-primary"><i class="icon-ok icon-white"></i> <fmt:message
+                        <button class="btn btn-primary"><i class="glyphicon-ok glyphicon-white"></i> <fmt:message
                                 key='bootstrapComponents.login.title'/>
                         </button>
                     </p>
@@ -72,7 +72,7 @@
                 </ui:loginArea>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true"><i class="icon-remove icon-white"></i> Close</button>
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true"><i class="glyphicon-remove glyphicon-white"></i> Close</button>
             </div>
         </div>
 
@@ -106,37 +106,50 @@
         </a>
         <ul class="dropdown-menu">
             <c:if test="${!renderContext.settings.distantPublicationServerMode
-and renderContext.mainResource.node.properties['j:originWS'].string ne 'live'
 and not jcr:isNodeType(renderContext.mainResource.node.resolveSite, 'jmix:remotelyPublished')
 }">
+                <c:choose>
+                    <c:when test="${renderContext.mainResource.node.properties['j:originWS'].string ne 'live'}">
+                        <c:set var="liveUrl" value="${url.live}"/>
+                        <c:set var="editUrl" value="${url.edit}"/>
+                        <c:set var="previewUrl" value="${url.preview}"/>
+                        <c:set var="contributeUrl" value="${url.preview}"/>
+                    </c:when>
+                    <c:when test="${renderContext.mainResource.node.properties['j:originWS'].string eq 'live'}">
+                        <c:set var="liveUrl" value="${url.live}.html"/>
+                        <c:set var="editUrl" value="${url.baseEdit}${renderContext.site.home.path}.html"/>
+                        <c:set var="previewUrl" value="${url.basePreview}${renderContext.site.home.path}.html"/>
+                        <c:set var="contributeUrl" value="${url.baseContribute}${renderContext.site.home.path}.html"/>
+                    </c:when>
+                </c:choose>
                 <c:if test="${! renderContext.liveMode}">
                     <li>
-                        <a href="<c:url value='${url.live}'/>">
-                            <i class="icon-globe"></i>
+                        <a href="<c:url value='${liveUrl}'/>">
+                            <i class="glyphicon-globe"></i>
                             <fmt:message key="bootstrapComponents.login.gotoLive"/>
                         </a>
                     </li>
                 </c:if>
                 <c:if test="${! renderContext.previewMode && jcr:hasPermission(renderContext.mainResource.node, 'editModeAccess')}">
                     <li>
-                        <a href="<c:url value='${url.preview}'/>">
-                            <i class="icon-eye-open"></i>
+                        <a href="<c:url value='${previewUrl}'/>">
+                            <i class="glyphicon-eye-open"></i>
                             <fmt:message key="bootstrapComponents.login.gotoPreview"/>
                         </a>
                     </li>
                 </c:if>
                 <c:if test="${! renderContext.editMode && jcr:hasPermission(renderContext.mainResource.node, 'editModeAccess')}">
                     <li>
-                        <a href="<c:url value='${url.edit}'/>">
-                            <i class="icon-edit"></i>
+                        <a href="<c:url value='${editUrl}'/>">
+                            <i class="glyphicon-edit"></i>
                             <fmt:message key="bootstrapComponents.login.gotoEdit"/>
                         </a>
                     </li>
                 </c:if>
                 <c:if test="${! renderContext.editMode && !jcr:hasPermission(renderContext.mainResource.node, 'editModeAccess') && jcr:hasPermission(renderContext.mainResource.node, 'contributeModeAccess')}">
                     <li>
-                        <a href="<c:url value='${url.contribute}'/>">
-                            <i class="icon-edit"></i>
+                        <a href="<c:url value='${contributeUrl}'/>">
+                            <i class="glyphicon-edit"></i>
                             <fmt:message key="bootstrapComponents.login.gotoContribute"/>
                         </a>
                     </li>
@@ -153,7 +166,7 @@ and not jcr:isNodeType(renderContext.mainResource.node.resolveSite, 'jmix:remote
             <li class="divider"></li>
             <li>
                 <a href="<c:url value='${url.myProfile}'/>">
-                    <i class="icon-user"></i>
+                    <i class="glyphicon-user"></i>
                     <fmt:message key="bootstrapComponents.login.profile"/>
                 </a>
             </li>
@@ -162,7 +175,7 @@ and not jcr:isNodeType(renderContext.mainResource.node.resolveSite, 'jmix:remote
 
             <li>
                 <a href="<c:url value='${url.logout}'/>">
-                    <i class="icon-off"></i>
+                    <i class="glyphicon-off"></i>
                     <fmt:message key="bootstrapComponents.login.logout"/>
                 </a>
             </li>
