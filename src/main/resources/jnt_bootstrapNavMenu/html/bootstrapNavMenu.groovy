@@ -86,7 +86,7 @@ printMenu = { node, navMenuLevel, omitFormatting ->
                                 print(" id=\"${layoutID.string}\"");
                             }
                             print(" class=\"");
-                            if (navMenuLevel == (startLevelValue + 1)) {
+                            if (navMenuLevel == 1) {
                                 print("nav");
                                 if (position && !"".equals(position.string)) {
                                     print(" pull-${position.string}");
@@ -102,7 +102,7 @@ printMenu = { node, navMenuLevel, omitFormatting ->
                         }
                         def listItemCssClass = "";
                         if (hasChildren) {
-                            if (navMenuLevel == (startLevelValue + 1)) {
+                            if (navMenuLevel == 1) {
                                 listItemCssClass = "dropdown";
                             } else {
                                 listItemCssClass = "dropdown-submenu";
