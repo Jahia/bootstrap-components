@@ -78,8 +78,7 @@
   <parent>
     <groupId>org.jahia.modules</groupId>
     <artifactId>jahia-modules</artifactId>
-    <version>7.0.0.0</version>
-    <relativePath></relativePath>
+    <version>7.1.0.0</version>
   </parent>
   <artifactId>bootstrap-components</artifactId>
   <version>4.0.0-SNAPSHOT</version>
@@ -122,18 +121,4 @@
       <url>https://devtools.jahia.com/nexus/content/groups/public</url>
     </repository>
   </repositories>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <extensions>true</extensions>
-        <configuration>
-          <instructions>
-            <Jahia-Depends>default,bootstrap,search,tabularList</Jahia-Depends>
-          </instructions>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>
