@@ -1,7 +1,10 @@
 import org.jahia.taglibs.jcr.node.JCRTagUtils
 
-baseline = currentNode.properties['j:baselineNode']
-maxDepth = currentNode.properties['j:maxDepth']
+// currentNode is not available here in 7.2 with cache refactoring
+// because this script will be call for key generation before the cache Filter
+// we need to use currentResource.node to load the current node
+baseline = currentResource.node.properties['j:baselineNode']
+maxDepth = currentResource.node.properties['j:maxDepth']
 
 def base;
 if (!baseline || baseline.string == 'home') {
