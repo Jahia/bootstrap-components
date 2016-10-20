@@ -113,14 +113,14 @@ and not jcr:isNodeType(renderContext.mainResource.node.resolveSite, 'jmix:remote
                         <c:set var="liveUrl" value="${url.live}"/>
                         <c:set var="editUrl" value="${url.edit}"/>
                         <c:set var="previewUrl" value="${url.preview}"/>
-                        <c:set var="contributeUrl" value="${url.preview}"/>
+                        <c:set var="contributeUrl" value="${url.contribute}"/>
                     </c:when>
-                    <c:when test="${renderContext.mainResource.node.properties['j:originWS'].string eq 'live'}">
+                    <c:otherwise>
                         <c:set var="liveUrl" value="${url.live}.html"/>
                         <c:set var="editUrl" value="${url.baseEdit}${renderContext.site.home.path}.html"/>
                         <c:set var="previewUrl" value="${url.basePreview}${renderContext.site.home.path}.html"/>
                         <c:set var="contributeUrl" value="${url.baseContribute}${renderContext.site.home.path}.html"/>
-                    </c:when>
+                    </c:otherwise>
                 </c:choose>
                 <c:if test="${! renderContext.liveMode}">
                     <li>
