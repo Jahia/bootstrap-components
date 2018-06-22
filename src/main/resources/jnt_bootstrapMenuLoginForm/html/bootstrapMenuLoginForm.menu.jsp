@@ -93,7 +93,7 @@
         <c:set var="firstname" value="${userNode.properties['j:firstName'].string}"/>
         <c:set var="lastname" value="${userNode.properties['j:lastName'].string}"/>
 
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <a href="#" class="dropdown-hover" data-hover="dropdown">
             <c:if test="${not empty picture}">
                 <template:addCacheDependency flushOnPathMatchingRegexp="${userNode.path}/files/profile/.*"/>
                 <img class='user-photo' src="${picture.node.thumbnailUrls['avatar_120']}" alt="${fn:escapeXml(firstname)} ${fn:escapeXml(lastname)}" width="60" height="32"/>
